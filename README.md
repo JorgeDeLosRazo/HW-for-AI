@@ -1,1 +1,1 @@
-# Hardware for AI\ML 
+# Hardware for AI & ML 
