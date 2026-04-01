@@ -10,6 +10,5 @@ The following prompt will be inputted into an LLM (I chose Claude) to test the L
     2) Use iverilog command (`iverilog -o adder4_sim 4bit_adder.v 4bit_adder_tb.v`)
         * `iverilog`: checks verilog files for errors and turns them into binary file
         * `-o`: this flag specifies the output file name
-        * `adder4_sim`: this is what came after the flag `-o` and specifes the name of our output file
-          
+        * `adder4_sim`: this is what came after the flag `-o` and specifes the name of our output file      
     3) Run `vvp adder4_sim` which takes the file generated in the step above and simulates the hardware behaviour
