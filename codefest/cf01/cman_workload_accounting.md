@@ -15,11 +15,22 @@ all weights and activations in FP32 (4 bytes each). No bias terms.
 2) Sum the MACs across all three layers to get the total MACs for one forward pass.
 
     The sum of the total MACs for the three layers is given by summing the MACs for each individual layer, which for our network is given by the following: <br>
+        <p align="center">
         $$\text{MAC}_{\text{tot}} = 200,704 + 32,768 + 1,280 = 234,752$$
-
+        <p>
+        
 3) Compute the total number of trainable parameters (weights only, no biases).
+
+
+
 4) Compute the total weight memory in bytes (FP32).
+
+
+
 5) Compute the total activation memory in bytes needed to store the input and all layer outputs simultaneously (FP32).
+
+    
+
 6) Compute arithmetic intensity as: (2 × total MACs) / (weight bytes + activation bytes).
 
 
