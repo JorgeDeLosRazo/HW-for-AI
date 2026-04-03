@@ -2,7 +2,7 @@
 You are given a 3-layer fully connected network with dimensions [784 → 256 → 128 → 10], batch size 1,
 all weights and activations in FP32 (4 bytes each). No bias terms. 
 
-![](images/cf01-neural-network.png)
+![](../../images/cf01-neural-network.png)
 
 **Tasks**
 1) For each layer, compute the number of multiply-accumulate operations (MACs). Show the formula and the substituted values.\\
