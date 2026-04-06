@@ -21,14 +21,28 @@ all weights and activations in FP32 (4 bytes each). No bias terms.
         
 3) Compute the total number of trainable parameters (weights only, no biases).
 
-
+    Since there are no bias terms, the total number of trainable parameters are the total number of weights. In other words, the total number of trainable parameters is the same as the total number of MACs. Lets call the number of trainable parameters $T$ <br>
+        <p align="center">
+        $$T = 234,752$$
+        <p>
 
 4) Compute the total weight memory in bytes (FP32).
 
-
+    Each weight needs to be stored somewhere, so if each weight has 32-bit memory for its storage then the total weight memory is calculated by multiplying the total weights (calculated above) times the memroy required per weight (in our case 32-bits). Since we want to know the memory in bytes, and we know that 32-bits is 4-bytes, we can instead multiply the number of weights by the number of bytes required per weight. Let $$W_p$$ denote the total weight memory.
+    <p align="center">
+    $$W_p = (234,752)(4 \text{bytes}) = 939,008 \text{bytes}$$
+    <p>
 
 5) Compute the total activation memory in bytes needed to store the input and all layer outputs simultaneously (FP32).
 
+    To obtain the activation memory we need to sum all the inputs plus all the layer outputs and multiply the totla by each value's memory. Let $A_M$ be the activation memory, and $O_n$ be the number of outputs at the nth layer. Also let $I$ be the number of inputs.
+    <p align="center">
+    $$\begin{align*}
+    A_M &= (I + O_1 + O_2 + O_3)(4 \text{bytes}\\
+        &= (784 + 256 + 128 + 10)(4 \text{bytes})\\
+        &= (1,178)(4 \text{bytes})\\
+        &= 4,712 \text{bytes}\\
+    \end{align*}$$
     
 
 6) Compute arithmetic intensity as: (2 × total MACs) / (weight bytes + activation bytes).
