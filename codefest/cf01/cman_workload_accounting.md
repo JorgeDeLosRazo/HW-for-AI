@@ -37,14 +37,14 @@ all weights and activations in FP32 (4 bytes each). No bias terms.
 
     To obtain the activation memory we need to sum all the inputs plus all the layer outputs and multiply the totla by each value's memory. Let $A_M$ be the activation memory, and $O_n$ be the number of outputs at the nth layer. Also let $I$ be the number of inputs.
 
- 
-    \begin{align*}
-    A_M &= (I + O_1 + O_2 + O_3)(4 \text{bytes})\\
-        &= (784 + 256 + 128 + 10)(4 \text{bytes})\\
-        &= (1,178)(4 \text{bytes})\\
-        &= 4,712 \text{bytes}\\
-    \end{align*}
-
+$$
+\begin{align*}
+    A_M &= (I + O_1 + O_2 + O_3)(4 \text{ bytes})\\
+        &= (784 + 256 + 128 + 10)(4 \text{ bytes})\\
+        &= (1{,}178)(4 \text{ bytes})\\
+        &= 4{,}712 \text{ bytes}
+\end{align*}
+$$
     
 
 6) Compute arithmetic intensity as: (2 × total MACs) / (weight bytes + activation bytes).
