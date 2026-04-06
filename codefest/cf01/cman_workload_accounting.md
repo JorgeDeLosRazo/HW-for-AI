@@ -36,7 +36,7 @@ all weights and activations in FP32 (4 bytes each). No bias terms.
 5) Compute the total activation memory in bytes needed to store the input and all layer outputs simultaneously (FP32).
 
     To obtain the activation memory we need to sum all the inputs plus all the layer outputs and multiply the totla by each value's memory. Let $A_M$ be the activation memory, and $O_n$ be the number of outputs at the nth layer. Also let $I$ be the number of inputs.
-    <p align="center">
+
     $$
     \begin{align*}
     A_M &= (I + O_1 + O_2 + O_3)(4 \text{bytes}\\
