@@ -53,7 +53,7 @@ $$
 
 $$
 \begin{align*}
-A_{int}  &=  (2 \times \text{MAC}_{\text{tot}}) / (W_{text{tot}} + A_M)\\
+A_{int}  &=  (2 \times \text{MAC}_{\text{tot}}) / (W_{\text{tot}} + A_M)\\
          &=  (2 \times 234{,}752) / (939{,}008 + 4{,}712)\\
          &=  0.498\\
 \end{align*}
