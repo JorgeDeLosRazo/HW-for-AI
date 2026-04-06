@@ -18,10 +18,17 @@ top5 = sorted(
 )[:5]
 
 print("\nTop 5 layers by MACs:")
-print(f"{'Class':20s} {'Name':30s} {'MACs':>15s} {'Params':>10s}")
-print("-" * 80)
+print(f"{'Class':20s} {'Full Path':40s} {'MACs':>12s} {'Params':>10s}")
+print("-" * 90)
 for l in top5:
-    print(f"{l.class_name:20s} {l.get_layer_name(True, True):40s} {l.macs/1e6:>12.2f} M  {l.num_params:>10,}")
+    # Build full path by walking up parent_info
+    parts = []
+    node = l
+    while node is not None:
+        parts.append(node.var_name)
+        node = node.parent_info
+    full_path = ".".join(reversed(parts[:-1]))  # exclude root ResNet
+    print(f"{l.class_name:20s} {full_path:40s} {l.macs/1e6:>12.2f} M  {l.num_params:>10,}")
 
 # Arithmetic intensity for the top layer
 top = top5[0]
