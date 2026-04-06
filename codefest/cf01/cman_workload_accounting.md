@@ -39,7 +39,7 @@ all weights and activations in FP32 (4 bytes each). No bias terms.
 
  
     \begin{align*}
-    A_M &= (I + O_1 + O_2 + O_3)(4 \text{bytes}\\
+    A_M &= (I + O_1 + O_2 + O_3)(4 \text{bytes})\\
         &= (784 + 256 + 128 + 10)(4 \text{bytes})\\
         &= (1,178)(4 \text{bytes})\\
         &= 4,712 \text{bytes}\\
