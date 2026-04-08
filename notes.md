@@ -22,9 +22,27 @@ Blah Blah
 In this context a compute kernel is a single computational routinethat runs on a processor (or GPU or some other HW)
 
 ## Arithmetic Intensity (AI)
+Measures how much computation a program performs relative to how much data it moves
+* $$I = \frac{\text{FLOPs}}{\text{bytes transferred}}
+    * If $AI > 1$: moves more data than it computes
+    * If $AI < 1$: computation larger than the data movement
+    * Unit is **FLOPs per byte** (FLOP/B)
+* Used to characterize whether workload is bottlenecked by compute throughput or by memory badnwidth
+    * A workload with **low AI** moves a lot of data relative to the work done
+    * A workload with a **high AI** does a lot of computation per byte fetched
+
+## General Matrix Multiply (GEMM)
+Hello
 
 
 
 ## Convolutional Layer
 Think of a convolutional layer as a filter being placed above an image
+
+
+## Ridge Point
+Optimal point were the memory-bandwith slope intersects the comput bound line
+
+## Maximum Memory Bandwidth
+
 
