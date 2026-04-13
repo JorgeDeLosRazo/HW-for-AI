@@ -1,6 +1,6 @@
 ## Roofline Model
 
-![](images/roofline_plot.png)
+![](../../images/roofline_plot.png)
 
 
 
