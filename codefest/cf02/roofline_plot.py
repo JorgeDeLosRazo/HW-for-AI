@@ -19,6 +19,15 @@ ax.loglog(ai, performance, 'b-', linewidth=2, label='Roofline')
 ax.axvline(x=ridge_point_x, color='gray', linestyle='--', linewidth=1)
 ax.plot(ridge_point_x, peak_compute, 'ro', markersize=8, label=f'Ridge point ({ridge_point_x} FLOP/byte)')
 
+# Kernel A — Dense GEMM 1024x1024 FP32
+kernel_a_ai   = 170.7   # FLOP/byte
+kernel_a_perf = min(peak_bandwidth * kernel_a_ai, peak_compute)  # 10,000 GFLOP/s
+ax.plot(kernel_a_ai, kernel_a_perf, 'g^', markersize=10, label=f'Kernel A: GEMM ({kernel_a_ai} FLOP/byte)')
+ax.annotate('Kernel A\n(GEMM)', xy=(kernel_a_ai, kernel_a_perf),
+            xytext=(kernel_a_ai * 0.3, kernel_a_perf * 0.4),
+            fontsize=9, color='green',
+            arrowprops=dict(arrowstyle='->', color='green'))
+
 # Annotations
 ax.annotate('Memory-bound', xy=(0.05, peak_bandwidth * 0.05),
             xytext=(0.05, peak_bandwidth * 0.12),
@@ -35,5 +44,4 @@ ax.set_xlim(1e-2, 1e4)
 ax.set_ylim(1, 1e5)
 
 plt.tight_layout()
-plt.savefig('roofline.png', dpi=150)
 plt.show()
