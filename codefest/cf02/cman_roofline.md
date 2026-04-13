@@ -33,8 +33,8 @@ Use the following hardware specification: peak compute = 10 TFLOPS (FP32), peak 
 
 4) For each kernel, state: (a) memory-bound or compute-bound on this hardware; (b) attainable performance ceiling in GFLOP/s; (c) what architectural change would most improve performance.
 
-    a) **Kernel A** is compute bound and **Kernel A** is memory bound.
-    b) **Kernel A** has a performance ceiling of $10,000\text{ GFLOPS}$ since it is compute-bound and **Kernel B** has a performance ceiling of $$26.56 \text{GFLOPS}$$ 
+    * a) **Kernel A** is compute bound and **Kernel A** is memory bound.
+    * b) **Kernel A** has a performance ceiling of $10,000\text{ GFLOPS}$ since it is compute-bound and **Kernel B** has a performance ceiling of $$26.56 \text{GFLOPS}$$ 
 
 
 
