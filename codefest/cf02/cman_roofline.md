@@ -1,2 +1,2 @@
 ## Roofline Model
-![](images/roofline_plot.png)
+![](/home/jorgerazo/HW-for-AI/images/roofline_plot.png)
