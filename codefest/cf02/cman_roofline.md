@@ -3,7 +3,7 @@ Use the following hardware specification: peak compute = 10 TFLOPS (FP32), peak 
 
 1) On log-log axes (x: FLOP/byte, y: GFLOP/s), draw the roofline: the diagonal bandwidth-limited segment and the flat compute-limited ceiling. Label the ridge point coordinates.
 
-![](images/roofline_plot.png)
+![](../../images/roofline_plot.png)
 
 2) Kernel A — Dense GEMM: two FP32 matrices of size 1024×1024 multiplied together. Compute FLOPs (2×N³ for square matmul), bytes transferred assuming all three matrices (A, B, C) are loaded/stored from DRAM with no cache reuse, arithmetic intensity, and plot the point on your roofline. 
 
