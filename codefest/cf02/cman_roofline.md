@@ -18,13 +18,15 @@ Use the following hardware specification: peak compute = 10 TFLOPS (FP32), peak 
 
     * **Number of FLOPs** : The number of FLOPs is simply the length of the vector since we are only perfomrming $N = 4,194,304$ operations.
     <p align="center">
-    $$\text{FLOPs} = 4,194,304$$
+    $$\text{FLOPs} = 4.194 \text{ MFLOPs}$$
     <p>
 
     * **Bytes Teansferred** : Since we have three vectors---data is read from the two vectors and data is written into the third vector, which means the number of bytes transferred is the number of FLOPS times three times the number of bytes in FP32.
     <p align="center">
-    $$\text{AI} = 3 \times \text{N} \times 4 \text{ bytes} = 3 \times 4,194,304 \times 4 \text{ bytes} = 50,331,648$$
+    $$\text{Bytes Transferred} = 3 \times \text{N} \times 4 \text{ bytes} = 3 \times 4,194,304 \times 4 \text{ bytes} = 50.33 \text{ MB}$$
     <p>
+
+    * **Arithmetic Intensity** : $$ \text{AI} = \frac{4.194 \text{ MFLOPs}}{ 50.33\text{ MB}} = 0.0833 \frac{\text{FLOPs}}{\text{B}}$$
 
 4) For each kernel, state: (a) memory-bound or compute-bound on this hardware; (b) attainable performance ceiling in GFLOP/s; (c) what architectural change would most improve performance.
 
