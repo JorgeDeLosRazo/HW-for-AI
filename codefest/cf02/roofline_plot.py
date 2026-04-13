@@ -28,6 +28,14 @@ ax.annotate('Kernel A\n(GEMM)', xy=(kernel_a_ai, kernel_a_perf),
             fontsize=9, color='green',
             arrowprops=dict(arrowstyle='->', color='green'))
 
+# Kernel B — Vector addition N=4,194,304 FP32
+kernel_b_ai   = 0.083   # FLOP/byte
+kernel_b_perf = min(peak_bandwidth * kernel_b_ai, peak_compute)  # 26.67 GFLOP/s
+ax.plot(kernel_b_ai, kernel_b_perf, 'ms', markersize=10, label=f'Kernel B: VecAdd ({kernel_b_ai} FLOP/byte)')
+ax.annotate('Kernel B\n(VecAdd)', xy=(kernel_b_ai, kernel_b_perf),
+            xytext=(kernel_b_ai * 4, kernel_b_perf * 3),
+            fontsize=9, color='purple')
+
 # Annotations
 ax.annotate('Memory-bound', xy=(0.05, peak_bandwidth * 0.05),
             xytext=(0.05, peak_bandwidth * 0.12),

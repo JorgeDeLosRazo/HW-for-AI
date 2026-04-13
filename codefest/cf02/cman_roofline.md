@@ -28,6 +28,13 @@ Use the following hardware specification: peak compute = 10 TFLOPS (FP32), peak 
 
     * **Arithmetic Intensity** : $$ \text{AI} = \frac{4.194 \text{ MFLOPs}}{ 50.33\text{ MB}} = 0.0833 \frac{\text{FLOPs}}{\text{B}}$$
 
+    ![](../../images/roofline_plot_with_kernelb_n_kernela.png)
+    
+)
+
+
+    
+
 4) For each kernel, state: (a) memory-bound or compute-bound on this hardware; (b) attainable performance ceiling in GFLOP/s; (c) what architectural change would most improve performance.
 
 
