@@ -20,6 +20,7 @@ Use the following hardware specification: peak compute = 10 TFLOPS (FP32), peak 
     <p align="center">
     $$\text{FLOPs} = 4,194,304$$
     <p>
+    
     * **Bytes Teansferred** : Since we have three vectors---data is read from the two vectors and data is written into the third vector, which means the number of bytes transferred is the number of FLOPS times three times the number of bytes in FP32.
     <p align="center">
     $$\text{AI} = 3 \times N \times 4 \text{ bytes} = 3 \times 4,194,304 \times 4 \text{ bytes} = 50,331,648$$
