@@ -7,9 +7,9 @@ Use the following hardware specification: peak compute = 10 TFLOPS (FP32), peak 
 
 2) Kernel A — Dense GEMM: two FP32 matrices of size 1024×1024 multiplied together. Compute FLOPs (2×N³ for square matmul), bytes transferred assuming all three matrices (A, B, C) are loaded/stored from DRAM with no cache reuse, arithmetic intensity, and plot the point on your roofline. 
 
-    * **Number of FLOPs** : $$\text{FLOPs} = 2 \times N^2 = 2 \times (1024)^2 = 2.147 GFLOP$$
+    * **Number of FLOPs** : $$\text{FLOPs} = 2 \times N^2 = 2 \times (1024)^2 = 2.147 \text{ GFLOP}$$
     * **Bytes Transferred** : $$\text{Bytes} = 3 \times N^2 \times 4 \text{ Bytes} = 3 \times 1024^2 \times 4 = 12.58\text{MB}$$
-    * **Arithmetic Intensity** : $$\text{AI} = \frac{\text{FLOPs}}{bytes transferred} = \frac{2.147\text{GFLOP}}{12.58\text{MB}} = 170.7\frac{\text{FLOPs}}{\text{Bytes}}$$
+    * **Arithmetic Intensity** : $$\text{AI} = \frac{\text{FLOPs}}{bytes transferred} = \frac{2.147\text{ GFLOP}}{12.58\text{MB}} = 170.7\frac{\text{FLOPs}}{\text{Bytes}}$$
 
 
 3) Kernel B — Vector addition: two FP32 vectors of length 4,194,304 added element-wise. Compute FLOPs, bytes transferred, arithmetic intensity, and plot the point.
