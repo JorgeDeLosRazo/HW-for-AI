@@ -1,7 +1,10 @@
 # Notes
 Blah Blah
 
-## Mutliply
+## Mutliply-Accumulate Operations (MACs)
+This is one of the fundamental computational blocks of used to calculate weigted sums in neural networks.
+ * It counts the mutlyply-add operations performed
+ * FIXME
 
 
 ## Inference vs Training

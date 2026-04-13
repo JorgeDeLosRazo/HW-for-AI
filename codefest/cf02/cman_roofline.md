@@ -16,7 +16,14 @@ Use the following hardware specification: peak compute = 10 TFLOPS (FP32), peak 
 
 3) Kernel B — Vector addition: two FP32 vectors of length 4,194,304 added element-wise. Compute FLOPs, bytes transferred, arithmetic intensity, and plot the point.
 
+    * **Number of FLOPs** : The number of FLOPs is simply the length of the vector since we are only perfomrming $N = 4,194,304$ operations.
+    <p align="center">
+    $$\text{FLOPs} = 4,194,304$$
+    <p>
+
 4) For each kernel, state: (a) memory-bound or compute-bound on this hardware; (b) attainable performance ceiling in GFLOP/s; (c) what architectural change would most improve performance.
+
+
 
 
 
