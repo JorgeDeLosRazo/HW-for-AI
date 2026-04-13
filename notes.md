@@ -6,6 +6,9 @@ This is one of the fundamental computational blocks of used to calculate weigted
  * It counts the mutlyply-add operations performed
  * FIXME
 
+## Bytes Transferred in Neural Networks
+The amount of data moved between memory (DRAM) and the processing unit (GPU/CPU/AI accelerator) during training or inference.
+
 
 ## Inference vs Training
 
