@@ -52,3 +52,24 @@ Optimal point were the memory-bandwith slope intersects the comput bound line
 ## Maximum Memory Bandwidth
 
 
+## GPU
+Used to parallelize.
+Good for compute-intensive functions
+
+### Single Instruction
+
+
+## Tensor
+It is a matrix with coordinates
+
+### Tensor Cores
+Operate on FP16 
+
+
+## CUDA
+Stands for Compute Unified Device Architecture. Is a parallel computing platform and programming model developed by NVIDIA.
+
+## Warp
+A warp is a group of threads that executes instructions simultaneously on a GPU 
+
+
