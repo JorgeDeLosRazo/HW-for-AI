@@ -76,6 +76,18 @@ Stands for Compute Unified Device Architecture. Is a parallel computing platform
 ## Warp
 A warp is a group of threads that executes instructions simultaneously on a GPU 
 
+## Row-Major Order
+The **Row-Major Order** is a method of storing mutlidimensional arrays in linear storage such as RAM
+<img src="images/row-major-order.png">
+
+## Column-Major Order
+The **Column-Major Order** is a mehtod of storing multidimensional arrays in linear storage sucha as RAM
+<img src="images/column-major-order.png">
+
+
+
+
+
 
 # Mahine Lerning Fundamentals
 * **Artificial Intelligence**: Involves any technique or system that tries to mimic human intelligence. Includes machine learning and deep learning as specific approaches
@@ -86,7 +98,7 @@ A warp is a group of threads that executes instructions simultaneously on a GPU
 <figcaption> Image from <a href="https://www.blog.trainindata.com/machine-lea**rning-fundamentals/">here</a></figcaption>
 </figure>
 
-### Type of ML Learning Algorithms
+### Types of ML Learning Algorithms
 ML methodologies can be categorized into two main types: supervised learning and unsupervised learning.
 * **Supervised Learning**: Supervised Learning involves training a model on labeled data where each input is associated with an output. The goal is to learn a mapping function from input variables  to output variables
     * `Regression`: Regression models predict continuous values. For example, predicting house prices based on features like square footage , number of bedrooms, and location is an example
