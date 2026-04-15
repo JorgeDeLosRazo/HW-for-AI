@@ -86,6 +86,14 @@ A warp is a group of threads that executes instructions simultaneously on a GPU
 <figcaption> Image from <a href="https://www.blog.trainindata.com/machine-lea**rning-fundamentals/">here</a></figcaption>
 </figure>
 
-### What Can ML Do?
-* **Natural Language Processing (NPL)**
+### Type of ML Learning Algorithms
+ML methodologies can be categorized into two main types: supervised learning and unsupervised learning.
+* **Supervised Learning**: Supervised Learning involves training a model on labeled data where each input is associated with an output. The goal is to learn a mapping function from input variables  to output variables
+    * `Regression`: Regression models predict continuous values. For example, predicting house prices based on features like square footage , number of bedrooms, and location is an example
+    
+    * `Classification`: Classification models predict discrete outcomes , or categories. For instance, classifying emails as spam or non-spam based on their content is an example.
+<img src="images/supervised_learning.png">
+
+* **Unsupervised Learning**: 
+
 
