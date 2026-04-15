@@ -109,10 +109,7 @@ A neural network is a ML model that stacks simple neurons in layers and learns p
     * **Computes a weighted sum**: $$z =W_1X_1 + W_2X_2 + ... + W_nX_n + b$$
     * **Applies an activation function**: `output = activation(z)`
     * **Passes the output forward**: passes output to next layer
-    
-      x₁ ──w₁─┐
-      x₂ ──w₂─┼──→  z = Σ(wᵢxᵢ) + b  ──→  activation(z)  ──→
-      x₃ ──w₃─┘
+NOTE: The **weights**(`W`) and **bias** (`b`) are what the model learns during training and the structure (how many neurons and how they connect) is what the engineer designs.
 
 
 * **Types of Activation Functions**
