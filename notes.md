@@ -114,6 +114,7 @@ NOTE: The **weights** (`W`) and **bias** (`b`) are what the model learns during 
 
 
 * **Types of Activation Functions**
+
 | Function |	Formula	    | Use                            |
 |----------|----------------|--------------------------------|
 |ReLU      | max(0, x)      | 	Default for hidden layers    |
