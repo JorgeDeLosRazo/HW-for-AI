@@ -30,8 +30,8 @@ In this context a compute kernel is a single computational routinethat runs on a
 ## Arithmetic Intensity (AI)
 Measures how much computation a program performs relative to how much data it moves
 * $$I = \frac{\text{FLOPs}}{\text{bytes transferred}}
-    * If $AI > 1$: moves more data than it computes
-    * If $AI < 1$: computation larger than the data movement
+    * If $AI < 1$: moves more data than it computes
+    * If $AI >1$: computation larger than the data movement
     * Unit is **FLOPs per byte** (FLOP/B)
 * Used to characterize whether workload is bottlenecked by compute throughput or by memory badnwidth
     * A workload with **low AI** moves a lot of data relative to the work done
@@ -81,7 +81,7 @@ A warp is a group of threads that executes instructions simultaneously on a GPU
 NOTE: Machine Learning is a subset of Artificial Intelligence that focuses on developing algorithms that enable computers to learn from data.
 
 <figure>
-<img src="../../images/venn-diagram-AI-ML.png">
+<img src="images/venn-diagram-AI-ML.png">
 <figcaption> Image from [here](https://www.blog.trainindata.com/machine-learning-fundamentals/)</figcaption>
 </figure>
 
