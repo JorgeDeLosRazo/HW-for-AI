@@ -41,6 +41,10 @@ Measures how much computation a program performs relative to how much data it mo
 Hello
 
 
+## Kernel in Machine Learning
+A kernel is a relatively straightforward function that operates on two vectors from the input space
+
+
 
 ## Convolutional Layer
 Think of a convolutional layer as a filter being placed above an image
@@ -72,4 +76,12 @@ Stands for Compute Unified Device Architecture. Is a parallel computing platform
 ## Warp
 A warp is a group of threads that executes instructions simultaneously on a GPU 
 
+
+# MAchine Lerning Fundamentals
+NOTE: Machine Learning is a subset of Artificial Intelligence that focuses on developing algorithms that enable computers to learn from data.
+
+<figure>
+<img src="../../images/venn-diagram-AI-ML.png">
+<figcaption> Image from [here](https://www.blog.trainindata.com/machine-learning-fundamentals/)</figcaption>
+</figure>
 
