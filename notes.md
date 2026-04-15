@@ -90,10 +90,15 @@ A warp is a group of threads that executes instructions simultaneously on a GPU
 ML methodologies can be categorized into two main types: supervised learning and unsupervised learning.
 * **Supervised Learning**: Supervised Learning involves training a model on labeled data where each input is associated with an output. The goal is to learn a mapping function from input variables  to output variables
     * `Regression`: Regression models predict continuous values. For example, predicting house prices based on features like square footage , number of bedrooms, and location is an example
-    
+
     * `Classification`: Classification models predict discrete outcomes , or categories. For instance, classifying emails as spam or non-spam based on their content is an example.
 <img src="images/supervised_learning.png">
 
-* **Unsupervised Learning**: 
+* **Unsupervised Learning**: In usupervised learning the ML algorithm learns patterns and structures from unlabeled data. The algorithm seeks to discover hidden patterns or groupings within the data.
+    * `Clustering`: Clustering algorithms group similar data points together into clusters. The goal is to identify natural groupings or clusters in the data without prior knowledge of their labels
+    * `Dimentionality Reduction`: Dimensionality reduction techniques aim to reduce the number of features in a dataset while preserving its essential information
+    * `Anomaly Detection`: Anomaly detection with unsupervised learning involves identifying unusual patterns or outliers in data without labeled examples. By analyzing the inherent structure and distribution of the data, unsupervised learning algorithms detect deviations or irregularities that stand out from the typical patterns, thus flagging potential anomalies.
+
+<img src="images/unsupervised_learning.png">
 
 
