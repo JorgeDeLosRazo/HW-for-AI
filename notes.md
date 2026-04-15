@@ -117,10 +117,10 @@ NOTE: The **weights** (`W`) and **bias** (`b`) are what the model learns during 
 
 | Function |	Formula	    | Use                            |
 |----------|----------------|--------------------------------|
-|ReLU      | max(0, x)      | 	Default for hidden layers    |
-|Sigmoid   | 1 / (1 + e^-x)	| Binary output                  |
+|ReLU      | `max(0, x)`    | 	Default for hidden layers    |
+|Sigmoid   | `1 / (1 + e^-x)`	| Binary output                  |
 |Softmax   |normalizes to probabilities | Multi-class output |
-| Tanh	   | (e^x - e^-x)/(e^x + e^-x) |	RNNs             |
+| Tanh	   | `(e^x - e^-x)/(e^x + e^-x)` |	RNNs             |
 | GELU	   | smooth ReLU variant       | Transformers        | 
 
 
