@@ -106,7 +106,7 @@ A neural network is a ML model that stacks simple neurons in layers and learns p
 
 * **Neuron**: A neuron is the is the most basic unit in a neural network. It's  single computational unit that:
     * **Recieves inputs**: `: either raw data or outputs from a previous layer
-    * **Computes a weighted sum**: `$$z = w_1X_1 + W_2X_2 + ... + W_nX_n + b$$`
+    * **Computes a weighted sum**: `$$z =W_1X_1 + W_2X_2 + ... + W_nX_n + b$$`
     * **Applies an activation function**: `output = activation(z)`
     * **Passes the output forward**: passes output to next layer
 * **Types of Activation Functions**
