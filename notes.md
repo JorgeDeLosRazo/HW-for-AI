@@ -77,11 +77,15 @@ Stands for Compute Unified Device Architecture. Is a parallel computing platform
 A warp is a group of threads that executes instructions simultaneously on a GPU 
 
 
-# MAchine Lerning Fundamentals
-NOTE: Machine Learning is a subset of Artificial Intelligence that focuses on developing algorithms that enable computers to learn from data.
+# Mahine Lerning Fundamentals
+* **Artificial Intelligence**: Involves any technique or system that tries to mimic human intelligence. Includes machine learning and deep learning as specific approaches
+* **Machine Learning**: ML is a subset of AI that focuses on developing algorithms that enable computers to learn from data
+* **Deep Learning**: It's a specific type of ML that uses neural networks to learn complex patterns in data
 
-<figure style="text-align: center">
 <img src="images/venn-diagram-AI-ML.png">
-<figcaption> Image from <a href="https://www.blog.trainindata.com/machine-learning-fundamentals/">here</a></figcaption>
+<figcaption> Image from <a href="https://www.blog.trainindata.com/machine-lea**rning-fundamentals/">here</a></figcaption>
 </figure>
+
+### What Can ML Do?
+* **Natural Language Processing (NPL)**
 
