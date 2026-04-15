@@ -80,7 +80,7 @@ A warp is a group of threads that executes instructions simultaneously on a GPU
 # MAchine Lerning Fundamentals
 NOTE: Machine Learning is a subset of Artificial Intelligence that focuses on developing algorithms that enable computers to learn from data.
 
-<figure>
+<figure style="text-align: center">
 <img src="images/venn-diagram-AI-ML.png">
 <figcaption> Image from <a href="https://www.blog.trainindata.com/machine-learning-fundamentals/">here</a></figcaption>
 </figure>
