@@ -101,4 +101,15 @@ ML methodologies can be categorized into two main types: supervised learning and
 
 <img src="images/unsupervised_learning.png">
 
+### The Neural Network
+A neural network is a ML model that stacks simple neurons in layers and learns pattern-recognizing weights and biases from data to map inputs to outputs.
+
+* **Neuron**: A neuron is the is the most basic unit in a neural network---it receives inputs with weights, it passes them through a function which introduces a bias, and produces an output
+NOTE: (each neuron is is governed by a threshold and actication function)
+
+<img src="images/neuron.png">
+
+
+
+
 
