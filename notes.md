@@ -112,6 +112,8 @@ A neural network is a ML model that stacks simple neurons in layers and learns p
 
 NOTE: The **weights** (`W`) and **bias** (`b`) are what the model learns during training and the structure (how many neurons and how they connect) is what the engineer designs.
 
+<img src="images/neuron.png">
+
 
 * **Types of Activation Functions**
 
@@ -124,7 +126,6 @@ NOTE: The **weights** (`W`) and **bias** (`b`) are what the model learns during 
 | GELU	   | smooth ReLU variant       | Transformers        | 
 
 
-<img src="images/neuron.png">
 
 
 
