@@ -110,11 +110,18 @@ A neural network is a ML model that stacks simple neurons in layers and learns p
     * **Applies an activation function**: `output = activation(z)`
     * **Passes the output forward**: passes output to next layer 
 
-NOTE: The **weights**(`W`) and **bias** (`b`) are what the model learns during training and the structure (how many neurons and how they connect) is what the engineer designs.
+NOTE: The **weights** (`W`) and **bias** (`b`) are what the model learns during training and the structure (how many neurons and how they connect) is what the engineer designs.
 
 
 * **Types of Activation Functions**
-    * 
+| Function |	Formula	    | Use                            |
+|----------|----------------|--------------------------------|
+|ReLU      | max(0, x)      | 	Default for hidden layers    |
+|Sigmoid   | 1 / (1 + e^-x)	| Binary output                  |
+|Softmax   |normalizes to probabilities | Multi-class output |
+| Tanh	   | (e^x - e^-x)/(e^x + e^-x) |	RNNs             |
+| GELU	   | smooth ReLU variant       | Transformers        | 
+
 
 <img src="images/neuron.png">
 
