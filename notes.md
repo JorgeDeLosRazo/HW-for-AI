@@ -82,6 +82,6 @@ NOTE: Machine Learning is a subset of Artificial Intelligence that focuses on de
 
 <figure>
 <img src="images/venn-diagram-AI-ML.png">
-<figcaption> Image from [here](https://www.blog.trainindata.com/machine-learning-fundamentals/)</figcaption>
+<figcaption> Image from <a href="https://www.blog.trainindata.com/machine-learning-fundamentals/">here</a></figcaption>
 </figure>
 
