@@ -17,7 +17,7 @@
     * **Compute the total DRAM traffic in bytes for the full matrix multiply, assuming every element access goes to DRAM (no data reuse)**<br>
         The DRAM traffic in bytes is the value $$A_{tot}$$ in bytes.
         <p align="center">
-        $$\text{Traffic} = A_{tot} \times 4 \text{ bytes} = 262,144 \text{ bytes}
+        $$\text{Traffic} = A_{tot} \times 4 \text{ bytes} = 262,144 \text{ bytes}$$
 
 
 2) Tiled loop (tile size T=8): the computation is blocked into T×T tiles. Compute the number of DRAM loads for A and B tiles across the full computation. Compute total DRAM traffic in bytes.
