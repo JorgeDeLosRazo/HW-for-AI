@@ -27,16 +27,16 @@
 
     * **Compute the number of DRAM loads for A and B tiles across the full computation.**<br>
 
-    To compute the number of DRAM loads is obtained in the same way as in Question 1). 
-    <p align="center">
-    $$R_{tot} = A_{loads} + B_{loads} = 2 \times 32^2 = 2,048$$
-    <p>
+        To compute the number of DRAM loads is obtained in the same way as in Question 1). 
+        <p align="center">
+        $$R_{tot} = A_{loads} + B_{loads} = 2 \times 32^2 = 2,048$$
+        <p>
 
 
     * **Compute the total DRAM traffic in bytes**<br>
-
-    $$\text{READS}_{\text{bytes}} = R_{tot} \times 4 \text{ bytes}
-
+        <p align="center">
+        $$\text{READS}_{\text{bytes}} = R_{tot} \times 4 \text{ bytes}$$
+        <p>
 
 3) **Compute the ratio of naive DRAM traffic to tiled DRAM traffic. Explain in one sentence why this ratio equals N/T.**
 
