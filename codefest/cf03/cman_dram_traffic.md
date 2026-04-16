@@ -8,7 +8,7 @@
         DRAM is given by 
         <p align="center">
         $$B_{reads} = N \times N \times N = 32^3 = 32,768$$
-        <p>*
+        <p>
     * **How many total element accesses are made to A and B?**<br>
         The amount of times the matrx elenents of A plus the amount of times the matrix elements of B were read gives you the total number of accesses. Let $$R_{tot}$$ be the total number of accesses made for elenmts in A and B.$$
         <p align="center">
