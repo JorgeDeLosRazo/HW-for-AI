@@ -20,7 +20,7 @@
         $$\text{READS}_{\text{bytes}} = A_{tot} \times 4 \text{ bytes} = 262,144 \text{ bytes}$$
         <p>
 
-        There will be $262$KB of reads to produce $4.1$KB of outputs.
+        There will be $262$ KB of reads to produce $4.1$ KB of outputs.
 
 
 2) Tiled loop (tile size T=8): the computation is blocked into T×T tiles. Compute the number of DRAM loads for A and B tiles across the full computation. Compute total DRAM traffic in bytes.
