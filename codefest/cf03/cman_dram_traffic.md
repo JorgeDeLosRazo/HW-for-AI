@@ -9,11 +9,13 @@
         <p align="center">
         $$B_{reads} = N \times N \times N = 32^3 = 32,768$$
         <p>
+
     * **How many total element accesses are made to A and B?**<br>
         The amount of times the matrx elenents of A plus the amount of times the matrix elements of B were read gives you the total number of accesses. Let $$R_{tot}$$ be the total number of accesses made for elenmts in A and B.$$
         <p align="center">
         $$R_{tot} = A_{reads} + B_{reads} = 2 \times 32,768 = 65,536$$
         <p>
+
     * **Compute the total DRAM traffic in bytes for the full matrix multiply, assuming every element access goes to DRAM (no data reuse)**<br>
 
         <p align="center">
@@ -35,11 +37,14 @@
 
     * **Compute the total DRAM traffic in bytes**<br>
         <p align="center">
-        $$\text{READS}_{\text{bytes}} = R_{tot} \times 4 \text{ bytes}$$
+        $$\text{READS}_{\text{bytes}} = R_{tot} \times 4 \text{ bytes} = 2,048 \times 4 = 8,192 \text{ bytes}$$
         <p>
 
 3) **Compute the ratio of naive DRAM traffic to tiled DRAM traffic. Explain in one sentence why this ratio equals N/T.**
 
+    <p align="center">
+    $$\frac{262,144}{8,192} = 32$ = \frac{N}{T} = \frac{32}{8} = 4$$
+    <p>
 
 
 4) **If DRAM bandwidth is 320 GB/s and compute is 10 TFLOPS, compute execution time for the naive case (memory-bound) and the tiled case. For each, state whether the bottleneck is compute or memory.**
