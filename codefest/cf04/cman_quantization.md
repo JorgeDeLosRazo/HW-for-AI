@@ -2,6 +2,7 @@
 
 ou are given the following 4×4 FP32 weight matrix W:<br>
 
+$w = $
 $$\begin{bmatrix} 
 0.85 & -1.20 & 0.34 & 2.10 \\
 -0.07 & 0.91 & -1.88 & 0.12 \\
