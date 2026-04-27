@@ -30,11 +30,13 @@ $$W_{deq} = W_q \times S =
 \begin{bmatrix} 
 0.85 & -1.20 & 0.35 & 2.10\\
 -0.07 & 0.91 & -1.87 & 0.13\\
-1.55 & 0.04 & -0.44 & 2.31\\
+1.55 & 0.04 & -0.44 & -2.31\\
 -0.18 & 1.04 & 0.76 & 0.55\\
 \end{bmatrix}$$
 
 4) **Error analysis. Compute the per-element absolute error |W − W_deq|. Identify the element with the largest error and compute the Mean Absolute Error (MAE) across all 16 elements.**
+
+* Per-element Absolute Error:
 
 $$W_{ERROR} =
 \begin{bmatrix} 
@@ -44,5 +46,13 @@ $$W_{ERROR} =
 0 & 0.01 & 0.01 & 0\\
 \end{bmatrix}$$
 
+* The largest absolute error is $0.01$ which many elemts of $W_{ERROR}$ have.
+
+$$MAE = \frac{0.06}{16} = 0.00375$$
+
+
+
+
 
 5) **Bad scale experiment. Use S_bad = 0.01 (too small). Repeat quantization and dequantization. Compute the MAE. Explain in one sentence what goes wrong when S is too small**
+
