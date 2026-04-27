@@ -22,7 +22,7 @@ $$W_q = \begin{bmatrix}
 -4 & 50 & -103 & 7\\
 85 & 2 & 24 & 127\\
 -10 & 57 & 42 & 30\\
-\end{bmatrix}
+\end{bmatrix}$$
 
 3) **Dequantize. Compute W_deq = W_q × S. Write out the 4×4 FP32 dequantized matrix.**
 
