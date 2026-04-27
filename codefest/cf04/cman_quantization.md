@@ -12,7 +12,7 @@ $$W = \begin{bmatrix}
        
 1) **Scale factor. Compute S using symmetric per-tensor quantization: S = max(|W|) / 127. Show the max value and the computed S.**<br>
 Note that max(|W|) = 2.31, therefore S is the following:<br>
-$$S = \frac{max(|W|)}{127} = \frac{2.31}{127} = 0.018188976378$$
+$$[/S = \frac{max(|W|)}{127} = \frac{2.31}{127} = 0.018188976378/]$$
 
 2) **Quantize. Quantize each element: W_q = round(W / S). Clamp to [−128, 127]. Write out the full 4×4 INT8 matrix.**
 
