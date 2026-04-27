@@ -10,3 +10,18 @@ $$W = \begin{bmatrix}
 -0.18 & 1.03 & 0.77 & 0.55\\  
 \end{bmatrix}$$
        
+1) **Scale factor. Compute S using symmetric per-tensor quantization: S = max(|W|) / 127. Show the max value and the computed S.**
+Note that max(|W|) = 2.31, therefore S is the following<br>
+$$ \begin{align*} S &= max(|W|) / 127 \\
+                    &= 2.31 / 127\\
+                    &= 0.018188976378\\
+    \end{align*}$$
+
+
+2) **Quantize. Quantize each element: W_q = round(W / S). Clamp to [−128, 127]. Write out the full 4×4 INT8 matrix.**
+
+3) **Dequantize. Compute W_deq = W_q × S. Write out the 4×4 FP32 dequantized matrix.**
+
+4) **Error analysis. Compute the per-element absolute error |W − W_deq|. Identify the element with the largest error and compute the Mean Absolute Error (MAE) across all 16 elements.**
+
+5) **Bad scale experiment. Use S_bad = 0.01 (too small). Repeat quantization and dequantization. Compute the MAE. Explain in one sentence what goes wrong when S is too small**
