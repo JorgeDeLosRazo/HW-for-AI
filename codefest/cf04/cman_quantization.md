@@ -20,11 +20,19 @@ $$ S = \frac{max(|W|)}{127} = \frac{2.31}{127} = 0.018188976378 $$
 $$W_q = \begin{bmatrix} 
 47 & -66 & 19 & 115\\
 -4 & 50 & -103 & 7\\
-85 & 2 & 24 & 127\\
+85 & 2 & -24 & -127\\
 -10 & 57 & 42 & 30\\
 \end{bmatrix}$$
 
 3) **Dequantize. Compute W_deq = W_q × S. Write out the 4×4 FP32 dequantized matrix.**
+
+$$W_{deq} = W_1 \times S = 
+\begin{bmatrix} 
+0.85 & -1.20 & -0.35 & 2.10\\
+-0.07 & 0.91 & -1.87 & 0.13\\
+1.55 & 0.04 & -0.44 & 2.31\\
+-0.18 & 1.04 & 0.76 & 0.55\\
+\end{bmatrix}$$
 
 4) **Error analysis. Compute the per-element absolute error |W − W_deq|. Identify the element with the largest error and compute the Mean Absolute Error (MAE) across all 16 elements.**
 
