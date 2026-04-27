@@ -26,7 +26,7 @@ $$W_q = \begin{bmatrix}
 
 3) **Dequantize. Compute W_deq = W_q × S. Write out the 4×4 FP32 dequantized matrix.**
 
-$$W_{deq} = W_1 \times S = 
+$$W_{deq} = W_q \times S = 
 \begin{bmatrix} 
 0.85 & -1.20 & -0.35 & 2.10\\
 -0.07 & 0.91 & -1.87 & 0.13\\
