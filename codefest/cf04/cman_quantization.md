@@ -17,6 +17,13 @@ $$ S = \frac{max(|W|)}{127} = \frac{2.31}{127} = 0.018188976378 $$
 
 2) **Quantize. Quantize each element: W_q = round(W / S). Clamp to [−128, 127]. Write out the full 4×4 INT8 matrix.**
 
+$$W_q = \begin{bmatrix} 
+47 & -66 & 19 & 115\\
+-4 & 50 & -103 & 7\\
+85 & 2 & 24 & 127\\
+-10 & 57 & 42 & 30\\
+\end{bmatrix}
+
 3) **Dequantize. Compute W_deq = W_q × S. Write out the 4×4 FP32 dequantized matrix.**
 
 4) **Error analysis. Compute the per-element absolute error |W − W_deq|. Identify the element with the largest error and compute the Mean Absolute Error (MAE) across all 16 elements.**
