@@ -51,8 +51,14 @@ $$W_{ERROR} =
 $$MAE = \frac{0.06}{16} = 0.00375$$
 
 
-
-
-
 5) **Bad scale experiment. Use S_bad = 0.01 (too small). Repeat quantization and dequantization. Compute the MAE. Explain in one sentence what goes wrong when S is too small**
 
+* Quantization:
+
+$$ W_q =
+\begin{bmatrix} 
+85 & -120 & 34 & 210 \\
+-7 & 91 & -188 & 12 \\
+155 & 3 & -44 & -231\\ 
+-18 & 103 & 77 & 55\\  
+\end{bmatrix}$$
