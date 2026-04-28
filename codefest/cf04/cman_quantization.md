@@ -86,3 +86,4 @@ $$ W_{ERROR} =
 
 * Problem with Samll $$\textit{S}$$
 
+There is more loss of data---this is due to the quantization and dequintization process. If $$\textit{S}$$ is too snall, then the the $W_q$ elements will be too large and there will be some clipping, leading to data loss, and this larger errors for the elements of $W_{ERROR}$
