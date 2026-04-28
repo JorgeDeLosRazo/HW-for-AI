@@ -28,7 +28,7 @@ $$W_q = \begin{bmatrix}
 
 $$W_{deq} = W_q \times S = 
 \begin{bmatrix} 
-0.85 & -1.20 & 0.35 & 2.10\\
+0.85 & -1.20 & 0.35 & 2.09\\
 -0.07 & 0.91 & -1.87 & 0.13\\
 1.55 & 0.04 & -0.44 & -2.31\\
 -0.18 & 1.04 & 0.76 & 0.55\\
@@ -40,7 +40,7 @@ $$W_{deq} = W_q \times S =
 
 $$W_{ERROR} =
 \begin{bmatrix} 
-0 & 0 & 0.01 & 0\\
+0 & 0 & 0.01 & 0.01\\
 0 & 0 & 0.01 & 0.01\\
 0 & 0.01 & 0 & 0\\
 0 & 0.01 & 0.01 & 0\\
@@ -48,7 +48,7 @@ $$W_{ERROR} =
 
 * The largest absolute error is $0.01$ which many elemts of $W_{ERROR}$ have.
 
-$$MAE = \frac{0.06}{16} = 0.00375$$
+$$MAE = \frac{0.07}{16} = 0.004375$$
 
 
 5) **Bad scale experiment. Use S_bad = 0.01 (too small). Repeat quantization and dequantization. Compute the MAE. Explain in one sentence what goes wrong when S is too small**
@@ -65,7 +65,7 @@ $$ W_q =
 
 * Dequintization:
 
-$$ W_{deq} = W_q \times S =
+$$ W_{deq} = W_q \times S_{bad} =
 \begin{bmatrix} 
 0.85 & -1.20 & 0.34 & 1.27 \\
 -0.07 & 0.91 & -1.28 & 0.12 \\
@@ -83,6 +83,8 @@ $$ W_{ERROR} =
 0.28 & 0 & 0 & 1.03\\
 0 & 0 & 0 & 0\\
 \end{bmatrix}$$
+
+$$MAE = \frac{2.74}{16} = 0.17125$$
 
 * Problem with Samll $$\textit{S}$$
 
