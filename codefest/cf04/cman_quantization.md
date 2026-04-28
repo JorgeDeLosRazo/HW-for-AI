@@ -1,6 +1,6 @@
 # CMAN Codefest \#4
 
-ou are given the following 4×4 FP32 weight matrix W:<br>
+You are given the following 4×4 FP32 weight matrix W:<br>
 
 
 $$W = \begin{bmatrix} 
@@ -46,7 +46,7 @@ $$W_{ERROR} =
 0 & 0.01 & 0.01 & 0\\
 \end{bmatrix}$$
 
-* The largest absolute error is $0.01$ which many elemts of $W_{ERROR}$ have.
+* The largest absolute error is $0.01$ which many elements of $W_{ERROR}$ have.
 
 $$MAE = \frac{0.07}{16} = 0.004375$$
 
@@ -63,7 +63,7 @@ $$ W_q =
 -18 & 103 & 77 & 55\\  
 \end{bmatrix}$$
 
-* Dequintization:
+* Dequantization:
 
 $$ W_{deq} = W_q \times S_{bad} =
 \begin{bmatrix} 
@@ -86,6 +86,6 @@ $$ W_{ERROR} =
 
 $$MAE = \frac{2.74}{16} = 0.17125$$
 
-* Problem with Samll $$\textit{S}$$
+* Problem with Small $$\textit{S}$$
 
-There is more loss of data---this is due to the quantization and dequintization process. If $$\textit{S}$$ is too snall, then the the $W_q$ elements will be too large and there will be some clipping, leading to data loss, and this larger errors for the elements of $W_{ERROR}$
+There is more loss of data---this is due to the quantization and dequantization process. If $$\textit{S}$$ is too small, then the $W_q$ elements will be too large and there will be some clipping, leading to data loss, and thus larger errors for the elements of $W_{ERROR}$
