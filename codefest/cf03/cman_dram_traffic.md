@@ -45,9 +45,11 @@
     <p align="center">
     $$\frac{262,144}{8,192} = 32$ = \frac{N}{T} = \frac{32}{8} = 4$$
     <p>
+    
 
 
 4) **If DRAM bandwidth is 320 GB/s and compute is 10 TFLOPS, compute execution time for the naive case (memory-bound) and the tiled case. For each, state whether the bottleneck is compute or memory.**
+
 
 
 

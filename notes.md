@@ -85,10 +85,6 @@ The **Column-Major Order** is a mehtod of storing multidimensional arrays in lin
 <img src="images/column-major-order.png">
 
 
-
-
-
-
 # Mahine Lerning Fundamentals
 * **Artificial Intelligence**: Involves any technique or system that tries to mimic human intelligence. Includes machine learning and deep learning as specific approaches
 * **Machine Learning**: ML is a subset of AI that focuses on developing algorithms that enable computers to learn from data
