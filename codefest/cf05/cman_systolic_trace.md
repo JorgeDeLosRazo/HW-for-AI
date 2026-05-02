@@ -38,7 +38,7 @@ $$\begin{align*}
 \text{MACs} &=  C_1 + C_2 + C_3 + C_4\\
             &= 2 + 4 + 2 + 0\\
             &= 8\\
-\end{align*}$$
+\end{align*}$$ <br>
 
     The total number of MACs is $$\text{MACs} = 8$$.<br>
 
