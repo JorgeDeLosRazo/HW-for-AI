@@ -36,7 +36,7 @@ $$
 \begin{align*}
 \text{MACs} &=  C_1 + C_2 + C_3 + C_4\\
             &= 2 + 4 + 2 + 0\\
-            &= 8
+            &= 8\\
 \end{align*}
 $$
 
