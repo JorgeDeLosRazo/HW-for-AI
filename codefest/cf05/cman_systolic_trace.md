@@ -22,7 +22,7 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
 
 | Cycle   |Row 0 Input   | Row 1 Input    | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
 |---------|--------------|----------------|----------------------|----------------------|---------------------|-----------------------|-----------| 
-| 1       | A[0][0] = 1  | -              |                      | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
+| 1       | A[0][0] = 1  | -              |  A[0][0] x 5 = 5     | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
 | 2       | A[1][0] = 3  | A[0][1] = 2    | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
 | 3       | -            | A[1][1] = 4    | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
 | 4       |-             | -              | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
