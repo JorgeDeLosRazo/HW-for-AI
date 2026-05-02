@@ -33,13 +33,13 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
     
     Let $$C_i$$ be the number of MACs for the $i$ th cycle.<br>
     
-    $$
-    \begin{align*}
-    \text{MACs} &=  C_1 + C_2 + C_3 + C_4\\
-                &= 2 + 4 + 2 + 0\\
-                &= 8\\
-    \end{align*}
-    $$
+$$
+\begin{align*}
+\text{MACs} &=  C_1 + C_2 + C_3 + C_4\\
+            &= 2 + 4 + 2 + 0\\
+            &= 8\\
+\end{align*}
+$$
 
 The total number of MACs is $$\text{MACs} = 8$$.<br>
 
