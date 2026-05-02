@@ -6,16 +6,16 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
 
 
 ```
-          col0          col1
+           col0          col1
         +----------+----------+
-row0 →  | PE[0][0] | PE[0][1] |
+row0 -> | PE[0][0] | PE[0][1] |
         |  w = 5   |  w = 6   |
-        +----↓-----+----↓-----+
-row1 →  | PE[1][0] | PE[1][1] |
+        +----v-----+----v-----+
+row1 -> | PE[1][0] | PE[1][1] |
         |  w = 7   |  w = 8   |
         +----------+----------+
-             ↓           ↓
-           out col0    out col1
+             v           v
+          out col0    out col1
 ```
 
 
