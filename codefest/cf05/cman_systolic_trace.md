@@ -44,8 +44,8 @@ The total number of MACs is $$\text{MACs} = 8$$.<br>
 
 (b) **Number of Times Each input Value is Reused**
 
-    By looking at the table from Quesiton 2, we see each input is reaused twice.
+By looking at the table from Quesiton 2, we see each input is reaused twice.
 
-
+(c) **Number of Off-chip Memory Accesses for A, B (as inputs), and C (as output),**
 
 4) **if this were output-stationary instead, which values would stay fixed in the PEs? Give a one-sentence answer**
