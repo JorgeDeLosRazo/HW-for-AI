@@ -31,7 +31,7 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
 
     a) **Total Number of MACs**<br>
     
-    Let $$C_i$$ be the number of MACs for the $i$th cycle.<br>
+    Let $$C_i$$ be the number of MACs for the $i$ th cycle.<br>
     
 $$
 \begin{align*}
