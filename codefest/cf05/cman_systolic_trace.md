@@ -21,10 +21,12 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
 
 
 
-| Cycle   |Row 0 Input | Row 1 Input  | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
-|---------|----------|----------------|----------------------|----------------------|---------------------|-----------------------|-----------| 
-
-
+| Cycle   |Row 0 Input   | Row 1 Input    | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
+|---------|--------------|----------------|----------------------|----------------------|---------------------|-----------------------|-----------| 
+| 1       | A[0][0] = 1  | -              | | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
+| 2       |   -          | -              | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
+| 3       | A[0][0]  | Row 1 Input  | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
+| 4       | A[0][0]  | Row 1 Input  | PE[0][0] partial sum | PE[0][1] partial sum | PE[1][0] partial sum |  PE[1][1] partial sum |  Output C | 
 
 3) **Count: (a) total MAC operations performed; (b) number of times each input value is reused; (c) number of off-chip memory accesses for A, B (as inputs), and C (as output).**
 
