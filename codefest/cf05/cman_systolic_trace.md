@@ -5,6 +5,7 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
 1) **Draw the 2×2 array of processing elements (PEs). Label each PE with its preloaded weight: PE[0][0] = B[0][0] = 5, PE[0][1] = B[0][1] = 6, PE[1][0] = B[1][0] = 7, PE[1][1] = B[1][1] = 8.**<br>
 
 
+```
 +----------+----------+
 | PE[0][0] | PE[0][1] |
 |  w = 5   |  w = 6   |
@@ -12,7 +13,7 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
 | PE[1][0] | PE[1][1] |
 |  w = 7   |  w = 8   |
 +----------+----------+
-
+```
 
 
 
