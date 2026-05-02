@@ -43,7 +43,7 @@ $$
 
 The total number of MACs is $$\text{MACs} = 8$$.<br>
 
-    b) **Number of Times Each input Value is Reused** 
+    b) **Number of Times Each input Value is Reused**<br>
 
     By looking at the table from Quesiton 2, we see each input is reaused twice.
 
