@@ -29,21 +29,21 @@ A 2×2 weight-stationary systolic array computes C = A × B where: A = [[1, 2], 
 
 3) **Count: (a) total MAC operations performed; (b) number of times each input value is reused; (c) number of off-chip memory accesses for A, B (as inputs), and C (as output).**
 
-    a) **Total Number of MACs**<br>
+    (a) **Total Number of MACs**<br>
     
     Let $$C_i$$ be the number of MACs for the $i$ th cycle.<br>
     
-$$
-\begin{align*}
-\text{MACs} &=  C_1 + C_2 + C_3 + C_4\\
-            &= 2 + 4 + 2 + 0\\
-            &= 8\\
-\end{align*}
-$$
+    $$
+    \begin{align*}
+    \text{MACs} &=  C_1 + C_2 + C_3 + C_4\\
+                &= 2 + 4 + 2 + 0\\
+                &= 8\\
+    \end{align*}
+    $$
 
 The total number of MACs is $$\text{MACs} = 8$$.<br>
 
-    b) **Number of Times Each input Value is Reused**<br>
+    (b) **Number of Times Each input Value is Reused**
 
     By looking at the table from Quesiton 2, we see each input is reaused twice.
 
