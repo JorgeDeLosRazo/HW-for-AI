@@ -1,0 +1,3 @@
+VCD info: dumpfile compute_core.vcd opened for output.
+PASS
+../tb/tb_compute_core.sv:217: $finish called at 485000 (1ps)

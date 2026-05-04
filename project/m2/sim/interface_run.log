@@ -1,0 +1,2 @@
+PASS
+../tb/tb_interface.sv:189: $finish called at 1225000 (1ps)
