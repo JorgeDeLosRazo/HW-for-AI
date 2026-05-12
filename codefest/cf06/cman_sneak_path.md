@@ -17,9 +17,11 @@ $$I_{col0} = \frac{V_{row0}}{1k\Omega} = \frac{1V}{1k\Omega} = 1\text{mA}$$
  $$
  \begin{align*}
  \frac{V_{row0} - V_{col1}}{R[0][1]} + \frac{V_{row1} - V_{col1}}{R[1][1]} &= 0\\
-  \frac{V_{row0} - V_{col1}}{2k\Omega} + \frac{V_{row1} - V_{col1}}{1k\Omega} &= 0\\
+ \frac{V_{row0} - V_{col1}}{2k\Omega} + \frac{V_{row1} - V_{col1}}{1k\Omega} &= 0\\
+ 2V_{row1} - 3V_{col1} &= -1\\
  \end{align*}
  $$
+
 
  
   
