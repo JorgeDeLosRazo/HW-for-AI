@@ -1,0 +1,10 @@
+=== crossbar_mac simulation results ===
+Input: in[0]=10  in[1]=20  in[2]=30  in[3]=40
+out[j]   got   expected   status
+out[0]    -40    -40      PASS
+out[1]      0      0      PASS
+out[2]    -20    -20      PASS
+out[3]    -20    -20      PASS
+--- 4/4 checks passed ---
+ALL TESTS PASSED
+crossbar_tb.sv:125: $finish called at 206000 (1ps)
