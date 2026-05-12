@@ -24,6 +24,7 @@ $$I_{col0} = \frac{V_{row0}}{1k\Omega} = \frac{1V}{1k\Omega} = 1\text{mA}$$
  $$
 
 
+
     KCL at Row 1:
 
  $$
