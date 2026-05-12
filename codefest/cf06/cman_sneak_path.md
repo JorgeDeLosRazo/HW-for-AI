@@ -30,10 +30,17 @@ KCL at Row 1:
  \begin{align*}
  \frac{V_{row1} - V_{col0}}{R[1][0]} + \frac{V_{row1} - V_{col1}}{R[1][1]} &= 0\\
  \frac{V_{row1} - 0}{2k\Omega} + \frac{V_{row1} - V_{col1}}{1k\Omega} &= 0\\
+ 3V_{row1} - 2V_{col1} = 0//
  \end{align*}
  $$
 
- 
+ Using the KCL euqations for Column 1 and Row 1 and solving for $V_{row1}$ and $V_{col1}$, we get the following voltages:
+
+ $$
+ \begin{align*}
+ V_{col1} &= 0.03V//
+ V_{row1} &= 0.2V//
+ \end{align*}
   
 
 4) **In 2–3 sentences, explain why the sneak path current corrupts the intended Matrix Vector Multiplication (MVM) result and what it implies for reading large crossbar arrays.**
