@@ -38,8 +38,8 @@ KCL at Row 1:
 
  $$
  \begin{align*}
- V_{col1} &= 0.03V\\
- V_{row1} &= 0.2V\\
+ V_{col1} &= 0.6V\\
+ V_{row1} &= 0.4V\\
  \end{align*}
  $$
 
