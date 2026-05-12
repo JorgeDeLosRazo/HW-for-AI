@@ -47,7 +47,7 @@ KCL at Row 1:
 
  $$
  \begin{align*}
- I_{col0} &= I_sneak + I_direct\\
+ I_{col0} &= {I_sneak} + I_{direct}\\
           &= \frac{0.4V}{2k\Omega} + 1mA\\
           &= 1.2mA\\
  \end{align*}
