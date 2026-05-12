@@ -12,7 +12,7 @@ $$I_{col0} = \frac{V_{row0}}{1k\Omega} = \frac{1V}{1k\Omega} = 1\text{mA}$$
 
 2) Sneak path read. Now apply V_row0 = 1 V to row 0 and hold col 0 at 0 V, but leave row 1 and col 1 floating (undriven). Use Kirchhoff's Current Law (KCL) to find the floating node voltages V_row1 and V_col1, then compute the actual current I_col0 including the sneak path contribution.
 
- KCL at Column 1:
+  KCL at Column 1:
 
  $$
  \begin{align*}
