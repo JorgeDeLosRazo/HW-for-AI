@@ -43,6 +43,15 @@ KCL at Row 1:
  \end{align*}
  $$
 
+ Actual I_col0 ncluding Sneak Path Contribution:
+
+ $$
+ \begin{align*}
+ I_{col0} &= I_sneak + I_direct\\
+          &= \frac{0.4V}{2k\Omega} + 1mA\\
+          &= 1.2mA\\
+ \end{align*}
+
 4) **In 2–3 sentences, explain why the sneak path current corrupts the intended Matrix Vector Multiplication (MVM) result and what it implies for reading large crossbar arrays.**
 
- 
+The MVM result depends on the column currents, these column currents as we just showed are affected by sneak currents of undriven rows. The amount of column current is set by the resistance of a particular input, so if the sneak current contribution affects the column current then the result of the MVM calculation will be affected as well.
