@@ -51,6 +51,8 @@ KCL at Row 1:
           &= \frac{0.4V}{2k\Omega} + 1mA\\
           &= 1.2mA\\
  \end{align*}
+ $$
+
 
 4) **In 2–3 sentences, explain why the sneak path current corrupts the intended Matrix Vector Multiplication (MVM) result and what it implies for reading large crossbar arrays.**
 
