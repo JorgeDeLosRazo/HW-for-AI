@@ -30,7 +30,7 @@ KCL at Row 1:
  \begin{align*}
  \frac{V_{row1} - V_{col0}}{R[1][0]} + \frac{V_{row1} - V_{col1}}{R[1][1]} &= 0\\
  \frac{V_{row1} - 0}{2k\Omega} + \frac{V_{row1} - V_{col1}}{1k\Omega} &= 0\\
- 3V_{row1} - 2V_{col1} = 0//
+ 3V_{row1} - 2V_{col1} = 0\\
  \end{align*}
  $$
 
@@ -38,8 +38,8 @@ KCL at Row 1:
 
  $$
  \begin{align*}
- V_{col1} &= 0.03V//
- V_{row1} &= 0.2V//
+ V_{col1} &= 0.03V\\
+ V_{row1} &= 0.2V\\
  \end{align*}
  $$
 
