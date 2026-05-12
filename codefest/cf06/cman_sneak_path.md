@@ -41,7 +41,7 @@ KCL at Row 1:
  V_{col1} &= 0.03V//
  V_{row1} &= 0.2V//
  \end{align*}
-  
+ $$
 
 4) **In 2–3 sentences, explain why the sneak path current corrupts the intended Matrix Vector Multiplication (MVM) result and what it implies for reading large crossbar arrays.**
 
