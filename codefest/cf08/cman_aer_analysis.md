@@ -6,7 +6,7 @@ communicated to the host using Address-Event Representation (AER): when a neuron
 
 1) **Compute the mean aggregate spike rate R (spikes/second) for the whole output layer. Show the formula and substitute values: R = N × f.**
 
-$$R = $$
+$$R = 1024 \times 50Hz = 51200~\text{(spikes/s)}$$
 
 2) **Each AER packet contains a 10-bit neuron address (since log₂(1024) = 10), a 6-bit timestamp, and a 4-bit framing/parity overhead, for 20 bits per packet total. Compute the mean required AER bandwidth B in bits/second and convert to Mbit/s. Show the formula: B = R × 20.**
 
