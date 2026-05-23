@@ -10,7 +10,11 @@ $$R = 1024 \times 50Hz = 51200~\text{(spikes/s)}$$
 
 2) **Each AER packet contains a 10-bit neuron address (since log₂(1024) = 10), a 6-bit timestamp, and a 4-bit framing/parity overhead, for 20 bits per packet total. Compute the mean required AER bandwidth B in bits/second and convert to Mbit/s. Show the formula: B = R × 20.**
 
+$$B = 51,200~\text{(spikes/s)} \times 20 = 1.024~\text{(MBits/s)}$$
+
 3) **Compare your B to each of the standard interfaces from the M1 table: SPI (≤50 Mbit/s), I²C (≤3.4 Mbit/s), AXI4-Lite (assume 100 Mbit/s effective for a narrow bus). For each interface, state whether it can sustain the mean rate, and identify which is the lowest-complexity interface that suffices**
+
+
 
 4) **Bursts matter. Suppose stimulus arrives that causes 25% of the 1024 neurons to fire within a 1 ms window (synchronous burst). Compute the peak instantaneous bandwidth required in Mbit/s during that window. Compare to the mean bandwidth from task 2 and identify the burst-to-mean ratio. State whether the interface chosen in task 3 can absorb the burst, or whether buffering is required (and roughly how deep).**
 
