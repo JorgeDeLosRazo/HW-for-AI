@@ -21,11 +21,11 @@ The three interfaces (SPI, I2C, and AXI4-Lite) can sustain the mean rate, howeve
 
 The peak instantaneous bandwidth is given by:<br>
 
-    $$B_{\text{peak}} = \frac{0.25N\times 20~\text{bits}}{1~\text{ms}} = 5.12~\text{(MBits/s)}$$
+$$B_{\text{peak}} = \frac{0.25N\times 20~\text{bits}}{1~\text{ms}} = 5.12~\text{(MBits/s)}$$
 
 The burst-to-mean ratio is the following:
 
-    $$S_{\text{ratio}} = \frac{B_{\text{peak}}}{B} = 5$$
+$$S_{\text{ratio}} = \frac{B_{\text{peak}}}{B} = 5$$
 
 We chose I2C in task 2, which has a mean bandwidth of ≤3.4 Mbit/s, and our $$B_{\text{peak}} = 5.12~\text{(MBits/s)}$$ which is larger than the I2C bandwidth. This means an I2C interface will not be able to absorb all the burst.<br>
 
