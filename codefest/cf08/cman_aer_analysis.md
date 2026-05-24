@@ -14,7 +14,7 @@ $$B = R \times 20 = 51,200~\text{(spikes/s)} \times 20 = 1.024~\text{(MBits/s)}$
 
 3) **Compare your B to each of the standard interfaces from the M1 table: SPI (≤50 Mbit/s), I²C (≤3.4 Mbit/s), AXI4-Lite (assume 100 Mbit/s effective for a narrow bus). For each interface, state whether it can sustain the mean rate, and identify which is the lowest-complexity interface that suffices**
 
-The three interfaces (SPI, $I^2C$, and AXI4-Lite) can sustain the mean rate, however the interface with the lowest-complexity that would suffice is $I^2C$ ($\geq 3.4~\text{(MBits/s)}$) since it only requires two wires (SDA and SCL).
+The three interfaces (SPI, I2C, and AXI4-Lite) can sustain the mean rate, however the interface with the lowest-complexity that would suffice is I2C ($\geq 3.4~\text{(MBits/s)}$) since it only requires two wires (SDA and SCL).
 
 
 4) **Bursts matter. Suppose stimulus arrives that causes 25% of the 1024 neurons to fire within a 1 ms window (synchronous burst). Compute the peak instantaneous bandwidth required in Mbit/s during that window. Compare to the mean bandwidth from task 2 and identify the burst-to-mean ratio. State whether the interface chosen in task 3 can absorb the burst, or whether buffering is required (and roughly how deep).**
