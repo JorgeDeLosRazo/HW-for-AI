@@ -29,7 +29,7 @@ $$S_{\text{ratio}} = \frac{B_{\text{peak}}}{B} = 5$$
 
 We chose I2C in task 2, which has a mean bandwidth of ≤3.4 Mbit/s, and our $$B_{\text{peak}} = 5.12~\text{(MBits/s)}$$ which is larger than the I2C bandwidth. This means an I2C interface will not be able to absorb all the burst.<br>
 
-In 1ms I2C can drain $$3.4~\text{(MBits/s)} * 1~\text{ms} = 3400~\text{(bits)}$$, so there will be $$(5120 \times 1~\text{1ms}) - 3400 = 1720~\text{bits}$$<br>
+In 1ms, I2C can drain $$3.4~\text{(MBits/s)} \times 1~\text{ms} = 3400~\text{(bits)}$$, so there will be $$(5120 \times 1~\text{1ms}) - 3400 = 1720~\text{bits}$$<br>
 
 
 
