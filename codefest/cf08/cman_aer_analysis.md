@@ -19,4 +19,8 @@ The three interfaces (SPI, I2C, and AXI4-Lite) can sustain the mean rate, howeve
 
 4) **Bursts matter. Suppose stimulus arrives that causes 25% of the 1024 neurons to fire within a 1 ms window (synchronous burst). Compute the peak instantaneous bandwidth required in Mbit/s during that window. Compare to the mean bandwidth from task 2 and identify the burst-to-mean ratio. State whether the interface chosen in task 3 can absorb the burst, or whether buffering is required (and roughly how deep).**
 
+The peak instantaneous bandwidth is given by:<br>
+
+    $$B_{peak} = \frac{0.25N\times 20~\text{bits}}{1~\text{ms}} = 5.12~\text{(MBits/s)}$$ 
+
 5) **Frame-based comparison. A conventional (non-AER) readout would sample all 1024 neurons every 1 ms regardless of activity, sending 1 bit per neuron per sample. Compute the frame-based bandwidth in Mbit/s and the AER-to-frame bandwidth ratio at the mean firing rate. State the firing rate f_crossover at which AER and frame-based bandwidths are equal (set them equal and solve for f). Briefly state in one sentence what this implies for when AER is the right choice.**
