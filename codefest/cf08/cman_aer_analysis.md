@@ -35,8 +35,20 @@ The size of the buffer then needs to be:
 
 $$\frac{1720}{20} = 86~\text{packets}$$
 
-
-
-
-
 5) **Frame-based comparison. A conventional (non-AER) readout would sample all 1024 neurons every 1 ms regardless of activity, sending 1 bit per neuron per sample. Compute the frame-based bandwidth in Mbit/s and the AER-to-frame bandwidth ratio at the mean firing rate. State the firing rate f_crossover at which AER and frame-based bandwidths are equal (set them equal and solve for f). Briefly state in one sentence what this implies for when AER is the right choice.**
+
+Frame based bandwidth:
+
+$$B_{\text{frame}} = 1024~\text{neurons} \times 1~\text{bit} \times \frac{1}{1\times10^{-3}~\text{s}} = 1{,}024{,}000~\text{bits/s} = 1.024~\text{Mbit/s}$$
+
+AER-to-frame ratio at mean firing rate:
+
+$$\text{ratio} = \frac{B_{AER}}{B_{frame}} = \frac{1.024~\text{Mbit/s}}{1.024~\text{Mbit/s}} = 1.0$$
+
+Crossover firing rate (set AER bandwidth equal to frame bandwidth and solve for f):
+
+$$N \times f \times 20 = N \times 1000$$
+
+$$f_{\text{crossover}} = \frac{1000}{20} = 50~\text{Hz}$$
+
+AER is the right choice when neurons fire below 50 Hz (sparse activity), since frame-based bandwidth is fixed regardless of activity while AER bandwidth scales with firing rate — the sparser the spikes, the greater the bandwidth savings.
