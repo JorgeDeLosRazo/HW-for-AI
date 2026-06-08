@@ -1,0 +1,1449 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.66 (git sha1 86f2ddebc, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.66]
+
+-- Running command `
+read_verilog -sv ../rtl/memristor_crossbar.sv ../rtl/top.sv
+hierarchy -check -top crossbar_top
+proc
+opt
+fsm
+opt
+memory
+opt
+techmap
+opt
+stat
+' --
+
+1. Executing Verilog-2005 frontend: ../rtl/memristor_crossbar.sv
+Parsing SystemVerilog input from `../rtl/memristor_crossbar.sv' to AST representation.
+Generating RTLIL representation for module `\memristor_crossbar'.
+Warning: Replacing memory \acc with list of registers. See ../rtl/memristor_crossbar.sv:72
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: ../rtl/top.sv
+Parsing SystemVerilog input from `../rtl/top.sv' to AST representation.
+Generating RTLIL representation for module `\crossbar_top'.
+Warning: Replacing memory \res_r with list of registers. See ../rtl/top.sv:211
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \crossbar_top
+Used module:     \memristor_crossbar
+
+3.2. Analyzing design hierarchy..
+Top module:  \crossbar_top
+Used module:     \memristor_crossbar
+Removed 0 unused modules.
+
+4. Executing PROC pass (convert processes to netlists).
+
+4.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$../rtl/top.sv:237$150 in module crossbar_top.
+Marked 1 switch rules as full_case in process $proc$../rtl/top.sv:208$144 in module crossbar_top.
+Marked 1 switch rules as full_case in process $proc$../rtl/top.sv:170$142 in module crossbar_top.
+Marked 2 switch rules as full_case in process $proc$../rtl/top.sv:161$139 in module crossbar_top.
+Marked 2 switch rules as full_case in process $proc$../rtl/top.sv:148$136 in module crossbar_top.
+Marked 2 switch rules as full_case in process $proc$../rtl/top.sv:135$133 in module crossbar_top.
+Marked 4 switch rules as full_case in process $proc$../rtl/memristor_crossbar.sv:60$26 in module memristor_crossbar.
+Removed a total of 0 dead cases.
+
+4.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 4 redundant assignments.
+Promoted 26 assignments to connections.
+
+4.4. Executing PROC_INIT pass (extract init attributes).
+
+4.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~25 debug messages>
+
+4.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\crossbar_top.$proc$../rtl/top.sv:237$150'.
+     1/4: $0\ar_addr_r[7:0]
+     2/4: $0\ar_active[0:0]
+     3/4: $0\rdata[31:0]
+     4/4: $0\rvalid[0:0]
+Creating decoders for process `\crossbar_top.$proc$../rtl/top.sv:208$144'.
+     1/5: $0\res_r[3][31:0]
+     2/5: $0\res_r[2][31:0]
+     3/5: $0\res_r[1][31:0]
+     4/5: $0\res_r[0][31:0]
+     5/5: $0\done_r[0:0]
+Creating decoders for process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+     1/8: $0\cb_act_last[0:0]
+     2/8: $0\cb_act_valid[0:0]
+     3/8: $0\cb_wload_en[0:0]
+     4/8: $0\cb_act_data[7:0]
+     5/8: $0\cb_wload_data[7:0]
+     6/8: $0\cb_wload_col[1:0]
+     7/8: $0\cb_wload_row[1:0]
+     8/8: $0\act_data_r[7:0]
+Creating decoders for process `\crossbar_top.$proc$../rtl/top.sv:161$139'.
+     1/1: $0\bvalid[0:0]
+Creating decoders for process `\crossbar_top.$proc$../rtl/top.sv:148$136'.
+     1/2: $0\wr_data_r[31:0]
+     2/2: $0\w_active[0:0]
+Creating decoders for process `\crossbar_top.$proc$../rtl/top.sv:135$133'.
+     1/2: $0\aw_addr_r[7:0]
+     2/2: $0\aw_active[0:0]
+Creating decoders for process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+     1/41: $3$fordecl_block$7.j[31:0]$86
+     2/41: $2$fordecl_block$7.j[31:0]$85
+     3/41: $2$memwr$\G$../rtl/memristor_crossbar.sv:78$25_EN[7:0]$82
+     4/41: $2$memwr$\G$../rtl/memristor_crossbar.sv:78$25_DATA[7:0]$81
+     5/41: $2$memwr$\G$../rtl/memristor_crossbar.sv:78$25_ADDR[31:0]$80
+     6/41: $1$fordecl_block$5.j[31:0]$59
+     7/41: $1$fordecl_block$1.r[31:0]$54
+     8/41: $1$fordecl_block$1.$for_loop$2[3].$fordecl_block$3.c[31:0]$58
+     9/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$24_EN[7:0]$76
+    10/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$23_EN[7:0]$75
+    11/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$22_EN[7:0]$74
+    12/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$21_EN[7:0]$73
+    13/41: $1$fordecl_block$1.$for_loop$2[2].$fordecl_block$3.c[31:0]$57
+    14/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$20_EN[7:0]$72
+    15/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$19_EN[7:0]$71
+    16/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$18_EN[7:0]$70
+    17/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$17_EN[7:0]$69
+    18/41: $1$fordecl_block$1.$for_loop$2[1].$fordecl_block$3.c[31:0]$56
+    19/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$16_EN[7:0]$68
+    20/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$15_EN[7:0]$67
+    21/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$14_EN[7:0]$66
+    22/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$13_EN[7:0]$65
+    23/41: $1$fordecl_block$1.$for_loop$2[0].$fordecl_block$3.c[31:0]$55
+    24/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$12_EN[7:0]$64
+    25/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$11_EN[7:0]$63
+    26/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$10_EN[7:0]$62
+    27/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:70$9_EN[7:0]$61
+    28/41: $0\result_valid[0:0]
+    29/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:78$25_EN[7:0]$79
+    30/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:78$25_DATA[7:0]$78
+    31/41: $1$memwr$\G$../rtl/memristor_crossbar.sv:78$25_ADDR[31:0]$77
+    32/41: $1$fordecl_block$7.j[31:0]$60
+    33/41: $0\acc[3][31:0]
+    34/41: $0\acc[2][31:0]
+    35/41: $0\acc[1][31:0]
+    36/41: $0\acc[0][31:0]
+    37/41: $0\k[1:0]
+    38/41: $0\result_3[31:0]
+    39/41: $0\result_2[31:0]
+    40/41: $0\result_1[31:0]
+    41/41: $0\result_0[31:0]
+
+4.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\crossbar_top.\rvalid' using process `\crossbar_top.$proc$../rtl/top.sv:237$150'.
+  created $dff cell `$procdff$523' with positive edge clock.
+Creating register for signal `\crossbar_top.\rdata' using process `\crossbar_top.$proc$../rtl/top.sv:237$150'.
+  created $dff cell `$procdff$524' with positive edge clock.
+Creating register for signal `\crossbar_top.\ar_active' using process `\crossbar_top.$proc$../rtl/top.sv:237$150'.
+  created $dff cell `$procdff$525' with positive edge clock.
+Creating register for signal `\crossbar_top.\ar_addr_r' using process `\crossbar_top.$proc$../rtl/top.sv:237$150'.
+  created $dff cell `$procdff$526' with positive edge clock.
+Creating register for signal `\crossbar_top.\done_r' using process `\crossbar_top.$proc$../rtl/top.sv:208$144'.
+  created $dff cell `$procdff$527' with positive edge clock.
+Creating register for signal `\crossbar_top.\res_r[0]' using process `\crossbar_top.$proc$../rtl/top.sv:208$144'.
+  created $dff cell `$procdff$528' with positive edge clock.
+Creating register for signal `\crossbar_top.\res_r[1]' using process `\crossbar_top.$proc$../rtl/top.sv:208$144'.
+  created $dff cell `$procdff$529' with positive edge clock.
+Creating register for signal `\crossbar_top.\res_r[2]' using process `\crossbar_top.$proc$../rtl/top.sv:208$144'.
+  created $dff cell `$procdff$530' with positive edge clock.
+Creating register for signal `\crossbar_top.\res_r[3]' using process `\crossbar_top.$proc$../rtl/top.sv:208$144'.
+  created $dff cell `$procdff$531' with positive edge clock.
+Creating register for signal `\crossbar_top.\act_data_r' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$532' with positive edge clock.
+Creating register for signal `\crossbar_top.\cb_wload_en' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$533' with positive edge clock.
+Creating register for signal `\crossbar_top.\cb_wload_row' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$534' with positive edge clock.
+Creating register for signal `\crossbar_top.\cb_wload_col' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$535' with positive edge clock.
+Creating register for signal `\crossbar_top.\cb_wload_data' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$536' with positive edge clock.
+Creating register for signal `\crossbar_top.\cb_act_valid' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$537' with positive edge clock.
+Creating register for signal `\crossbar_top.\cb_act_last' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$538' with positive edge clock.
+Creating register for signal `\crossbar_top.\cb_act_data' using process `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+  created $dff cell `$procdff$539' with positive edge clock.
+Creating register for signal `\crossbar_top.\bvalid' using process `\crossbar_top.$proc$../rtl/top.sv:161$139'.
+  created $dff cell `$procdff$540' with positive edge clock.
+Creating register for signal `\crossbar_top.\w_active' using process `\crossbar_top.$proc$../rtl/top.sv:148$136'.
+  created $dff cell `$procdff$541' with positive edge clock.
+Creating register for signal `\crossbar_top.\wr_data_r' using process `\crossbar_top.$proc$../rtl/top.sv:148$136'.
+  created $dff cell `$procdff$542' with positive edge clock.
+Creating register for signal `\crossbar_top.\aw_active' using process `\crossbar_top.$proc$../rtl/top.sv:135$133'.
+  created $dff cell `$procdff$543' with positive edge clock.
+Creating register for signal `\crossbar_top.\aw_addr_r' using process `\crossbar_top.$proc$../rtl/top.sv:135$133'.
+  created $dff cell `$procdff$544' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\result_valid' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$545' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\result_0' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$546' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\result_1' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$547' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\result_2' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$548' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\result_3' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$549' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\k' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$550' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$fordecl_block$1.r' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$551' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$fordecl_block$1.$for_loop$2[0].$fordecl_block$3.c' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$552' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$fordecl_block$1.$for_loop$2[1].$fordecl_block$3.c' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$553' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$fordecl_block$1.$for_loop$2[2].$fordecl_block$3.c' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$554' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$fordecl_block$1.$for_loop$2[3].$fordecl_block$3.c' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$555' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$fordecl_block$5.j' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$556' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$fordecl_block$7.j' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$557' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\acc[0]' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$558' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\acc[1]' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$559' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\acc[2]' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$560' with positive edge clock.
+Creating register for signal `\memristor_crossbar.\acc[3]' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$561' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$9_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$562' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$10_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$563' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$11_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$564' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$12_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$565' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$13_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$566' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$14_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$567' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$15_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$568' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$16_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$569' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$17_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$570' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$18_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$571' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$19_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$572' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$20_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$573' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$21_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$574' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$22_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$575' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$23_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$576' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:70$24_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$577' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:78$25_ADDR' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$578' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:78$25_DATA' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$579' with positive edge clock.
+Creating register for signal `\memristor_crossbar.$memwr$\G$../rtl/memristor_crossbar.sv:78$25_EN' using process `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+  created $dff cell `$procdff$580' with positive edge clock.
+
+4.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 5 empty switches in `\crossbar_top.$proc$../rtl/top.sv:237$150'.
+Removing empty process `crossbar_top.$proc$../rtl/top.sv:237$150'.
+Found and cleaned up 3 empty switches in `\crossbar_top.$proc$../rtl/top.sv:208$144'.
+Removing empty process `crossbar_top.$proc$../rtl/top.sv:208$144'.
+Found and cleaned up 4 empty switches in `\crossbar_top.$proc$../rtl/top.sv:170$142'.
+Removing empty process `crossbar_top.$proc$../rtl/top.sv:170$142'.
+Found and cleaned up 3 empty switches in `\crossbar_top.$proc$../rtl/top.sv:161$139'.
+Removing empty process `crossbar_top.$proc$../rtl/top.sv:161$139'.
+Found and cleaned up 3 empty switches in `\crossbar_top.$proc$../rtl/top.sv:148$136'.
+Removing empty process `crossbar_top.$proc$../rtl/top.sv:148$136'.
+Found and cleaned up 3 empty switches in `\crossbar_top.$proc$../rtl/top.sv:135$133'.
+Removing empty process `crossbar_top.$proc$../rtl/top.sv:135$133'.
+Found and cleaned up 4 empty switches in `\memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+Removing empty process `memristor_crossbar.$proc$../rtl/memristor_crossbar.sv:60$26'.
+Cleaned up 25 empty switches.
+
+4.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+<suppressed ~25 debug messages>
+Optimizing module memristor_crossbar.
+<suppressed ~41 debug messages>
+
+5. Executing OPT pass (performing simple optimizations).
+
+5.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+<suppressed ~20 debug messages>
+
+5.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 120 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Computing hashes of 108 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+<suppressed ~36 debug messages>
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 155 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 151 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 147 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 143 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 139 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+<suppressed ~48 debug messages>
+Removed a total of 28 cells.
+
+5.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$353.
+    dead port 2/2 on $mux $procmux$347.
+    dead port 2/2 on $mux $procmux$341.
+    dead port 2/2 on $mux $procmux$335.
+    dead port 2/2 on $mux $procmux$329.
+    dead port 2/2 on $mux $procmux$326.
+Removed 6 multiplexer ports.
+<suppressed ~187 debug messages>
+
+5.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+    Consolidated identical input bits for $mux cell $procmux$419:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$419_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$419_Y [0]
+      New connections: $procmux$419_Y [7:1] = { $procmux$419_Y [0] $procmux$419_Y [0] $procmux$419_Y [0] $procmux$419_Y [0] $procmux$419_Y [0] $procmux$419_Y [0] $procmux$419_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$416:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$416_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$416_Y [0]
+      New connections: $procmux$416_Y [7:1] = { $procmux$416_Y [0] $procmux$416_Y [0] $procmux$416_Y [0] $procmux$416_Y [0] $procmux$416_Y [0] $procmux$416_Y [0] $procmux$416_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$413:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$413_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$413_Y [0]
+      New connections: $procmux$413_Y [7:1] = { $procmux$413_Y [0] $procmux$413_Y [0] $procmux$413_Y [0] $procmux$413_Y [0] $procmux$413_Y [0] $procmux$413_Y [0] $procmux$413_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$410:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$410_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$410_Y [0]
+      New connections: $procmux$410_Y [7:1] = { $procmux$410_Y [0] $procmux$410_Y [0] $procmux$410_Y [0] $procmux$410_Y [0] $procmux$410_Y [0] $procmux$410_Y [0] $procmux$410_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$404:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$404_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$404_Y [0]
+      New connections: $procmux$404_Y [7:1] = { $procmux$404_Y [0] $procmux$404_Y [0] $procmux$404_Y [0] $procmux$404_Y [0] $procmux$404_Y [0] $procmux$404_Y [0] $procmux$404_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$401:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$401_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$401_Y [0]
+      New connections: $procmux$401_Y [7:1] = { $procmux$401_Y [0] $procmux$401_Y [0] $procmux$401_Y [0] $procmux$401_Y [0] $procmux$401_Y [0] $procmux$401_Y [0] $procmux$401_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$398:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$398_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$398_Y [0]
+      New connections: $procmux$398_Y [7:1] = { $procmux$398_Y [0] $procmux$398_Y [0] $procmux$398_Y [0] $procmux$398_Y [0] $procmux$398_Y [0] $procmux$398_Y [0] $procmux$398_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$395:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$395_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$395_Y [0]
+      New connections: $procmux$395_Y [7:1] = { $procmux$395_Y [0] $procmux$395_Y [0] $procmux$395_Y [0] $procmux$395_Y [0] $procmux$395_Y [0] $procmux$395_Y [0] $procmux$395_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$389:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$389_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$389_Y [0]
+      New connections: $procmux$389_Y [7:1] = { $procmux$389_Y [0] $procmux$389_Y [0] $procmux$389_Y [0] $procmux$389_Y [0] $procmux$389_Y [0] $procmux$389_Y [0] $procmux$389_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$386:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$386_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$386_Y [0]
+      New connections: $procmux$386_Y [7:1] = { $procmux$386_Y [0] $procmux$386_Y [0] $procmux$386_Y [0] $procmux$386_Y [0] $procmux$386_Y [0] $procmux$386_Y [0] $procmux$386_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$383:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$383_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$383_Y [0]
+      New connections: $procmux$383_Y [7:1] = { $procmux$383_Y [0] $procmux$383_Y [0] $procmux$383_Y [0] $procmux$383_Y [0] $procmux$383_Y [0] $procmux$383_Y [0] $procmux$383_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$380:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$380_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$380_Y [0]
+      New connections: $procmux$380_Y [7:1] = { $procmux$380_Y [0] $procmux$380_Y [0] $procmux$380_Y [0] $procmux$380_Y [0] $procmux$380_Y [0] $procmux$380_Y [0] $procmux$380_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$374:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$374_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$374_Y [0]
+      New connections: $procmux$374_Y [7:1] = { $procmux$374_Y [0] $procmux$374_Y [0] $procmux$374_Y [0] $procmux$374_Y [0] $procmux$374_Y [0] $procmux$374_Y [0] $procmux$374_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$371:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$371_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$371_Y [0]
+      New connections: $procmux$371_Y [7:1] = { $procmux$371_Y [0] $procmux$371_Y [0] $procmux$371_Y [0] $procmux$371_Y [0] $procmux$371_Y [0] $procmux$371_Y [0] $procmux$371_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$368:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$368_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$368_Y [0]
+      New connections: $procmux$368_Y [7:1] = { $procmux$368_Y [0] $procmux$368_Y [0] $procmux$368_Y [0] $procmux$368_Y [0] $procmux$368_Y [0] $procmux$368_Y [0] $procmux$368_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$365:
+      Old ports: A=8'11111111, B=8'00000000, Y=$procmux$365_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$365_Y [0]
+      New connections: $procmux$365_Y [7:1] = { $procmux$365_Y [0] $procmux$365_Y [0] $procmux$365_Y [0] $procmux$365_Y [0] $procmux$365_Y [0] $procmux$365_Y [0] $procmux$365_Y [0] }
+    Consolidated identical input bits for $mux cell $procmux$338:
+      Old ports: A=8'00000000, B=8'11111111, Y=$procmux$338_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$338_Y [0]
+      New connections: $procmux$338_Y [7:1] = { $procmux$338_Y [0] $procmux$338_Y [0] $procmux$338_Y [0] $procmux$338_Y [0] $procmux$338_Y [0] $procmux$338_Y [0] $procmux$338_Y [0] }
+  Optimizing cells in module \memristor_crossbar.
+    Consolidated identical input bits for $mux cell $procmux$431:
+      Old ports: A=8'00000000, B=$2$memwr$\G$../rtl/memristor_crossbar.sv:78$25_EN[7:0]$82, Y=$procmux$431_Y
+      New ports: A=1'0, B=$procmux$338_Y [0], Y=$procmux$431_Y [0]
+      New connections: $procmux$431_Y [7:1] = { $procmux$431_Y [0] $procmux$431_Y [0] $procmux$431_Y [0] $procmux$431_Y [0] $procmux$431_Y [0] $procmux$431_Y [0] $procmux$431_Y [0] }
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 18 changes.
+
+5.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 108 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 133 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 118 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 103 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+<suppressed ~90 debug messages>
+Removed a total of 30 cells.
+
+5.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$533 ($dff) from module crossbar_top (D = $procmux$237_Y, Q = \cb_wload_en, rval = 1'0).
+Adding SRST signal on $procdff$534 ($dff) from module crossbar_top (D = $procmux$274_Y, Q = \cb_wload_row, rval = 2'00).
+Adding EN signal on $auto$ff.cc:337:slice$601 ($sdff) from module crossbar_top (D = \wr_data_r [3:2], Q = \cb_wload_row).
+Adding SRST signal on $procdff$535 ($dff) from module crossbar_top (D = $procmux$266_Y, Q = \cb_wload_col, rval = 2'00).
+Adding EN signal on $auto$ff.cc:337:slice$605 ($sdff) from module crossbar_top (D = \wr_data_r [1:0], Q = \cb_wload_col).
+Adding SRST signal on $procdff$536 ($dff) from module crossbar_top (D = $procmux$258_Y, Q = \cb_wload_data, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$609 ($sdff) from module crossbar_top (D = \wr_data_r [11:4], Q = \cb_wload_data).
+Adding SRST signal on $procdff$537 ($dff) from module crossbar_top (D = $procmux$227_Y, Q = \cb_act_valid, rval = 1'0).
+Adding SRST signal on $procdff$538 ($dff) from module crossbar_top (D = \wr_data_r [1], Q = \cb_act_last, rval = 1'0).
+Adding SRST signal on $procdff$539 ($dff) from module crossbar_top (D = $procmux$250_Y, Q = \cb_act_data, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$619 ($sdff) from module crossbar_top (D = \act_data_r, Q = \cb_act_data).
+Adding SRST signal on $procdff$540 ($dff) from module crossbar_top (D = $procmux$289_Y, Q = \bvalid, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$623 ($sdff) from module crossbar_top (D = $procmux$289_Y, Q = \bvalid).
+Adding SRST signal on $procdff$541 ($dff) from module crossbar_top (D = $procmux$303_Y, Q = \w_active, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$627 ($sdff) from module crossbar_top (D = $procmux$303_Y, Q = \w_active).
+Adding SRST signal on $procdff$542 ($dff) from module crossbar_top (D = $procmux$295_Y, Q = \wr_data_r, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$631 ($sdff) from module crossbar_top (D = \wdata, Q = \wr_data_r).
+Adding SRST signal on $procdff$543 ($dff) from module crossbar_top (D = $procmux$317_Y, Q = \aw_active, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$633 ($sdff) from module crossbar_top (D = $procmux$317_Y, Q = \aw_active).
+Adding SRST signal on $procdff$544 ($dff) from module crossbar_top (D = $procmux$309_Y, Q = \aw_addr_r, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$637 ($sdff) from module crossbar_top (D = \awaddr, Q = \aw_addr_r).
+Adding SRST signal on $procdff$523 ($dff) from module crossbar_top (D = $procmux$180_Y, Q = \rvalid, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$639 ($sdff) from module crossbar_top (D = 1'1, Q = \rvalid).
+Adding SRST signal on $procdff$524 ($dff) from module crossbar_top (D = $procmux$175_Y, Q = \rdata, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$645 ($sdff) from module crossbar_top (D = $procmux$169_Y, Q = \rdata).
+Adding SRST signal on $procdff$525 ($dff) from module crossbar_top (D = $procmux$161_Y, Q = \ar_active, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$647 ($sdff) from module crossbar_top (D = 1'1, Q = \ar_active).
+Adding SRST signal on $procdff$526 ($dff) from module crossbar_top (D = $procmux$156_Y, Q = \ar_addr_r, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$653 ($sdff) from module crossbar_top (D = \araddr, Q = \ar_addr_r).
+Adding SRST signal on $procdff$527 ($dff) from module crossbar_top (D = $procmux$207_Y, Q = \done_r, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$655 ($sdff) from module crossbar_top (D = 1'1, Q = \done_r).
+Adding SRST signal on $procdff$528 ($dff) from module crossbar_top (D = $procmux$202_Y, Q = \res_r[0], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$661 ($sdff) from module crossbar_top (D = \cb_result_0, Q = \res_r[0]).
+Adding SRST signal on $procdff$529 ($dff) from module crossbar_top (D = $procmux$197_Y, Q = \res_r[1], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$663 ($sdff) from module crossbar_top (D = \cb_result_1, Q = \res_r[1]).
+Adding SRST signal on $procdff$530 ($dff) from module crossbar_top (D = $procmux$192_Y, Q = \res_r[2], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$665 ($sdff) from module crossbar_top (D = \cb_result_2, Q = \res_r[2]).
+Adding SRST signal on $procdff$531 ($dff) from module crossbar_top (D = $procmux$187_Y, Q = \res_r[3], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$667 ($sdff) from module crossbar_top (D = \cb_result_3, Q = \res_r[3]).
+Adding SRST signal on $procdff$532 ($dff) from module crossbar_top (D = $procmux$281_Y, Q = \act_data_r, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:337:slice$669 ($sdff) from module crossbar_top (D = \wr_data_r [7:0], Q = \act_data_r).
+Adding SRST signal on $procdff$545 ($dff) from module memristor_crossbar (D = $procmux$423_Y, Q = \result_valid, rval = 1'0).
+Adding SRST signal on $procdff$546 ($dff) from module memristor_crossbar (D = $procmux$518_Y, Q = \result_0, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$676 ($sdff) from module memristor_crossbar (D = $add$../rtl/memristor_crossbar.sv:83$91_Y, Q = \result_0).
+Adding SRST signal on $procdff$547 ($dff) from module memristor_crossbar (D = $procmux$509_Y, Q = \result_1, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$680 ($sdff) from module memristor_crossbar (D = $add$../rtl/memristor_crossbar.sv:84$96_Y, Q = \result_1).
+Adding EN signal on $procdff$552 ($dff) from module memristor_crossbar (D = 4, Q = $fordecl_block$1.$for_loop$2[0].$fordecl_block$3.c).
+Adding EN signal on $procdff$553 ($dff) from module memristor_crossbar (D = 4, Q = $fordecl_block$1.$for_loop$2[1].$fordecl_block$3.c).
+Adding EN signal on $procdff$554 ($dff) from module memristor_crossbar (D = 4, Q = $fordecl_block$1.$for_loop$2[2].$fordecl_block$3.c).
+Adding EN signal on $procdff$555 ($dff) from module memristor_crossbar (D = 4, Q = $fordecl_block$1.$for_loop$2[3].$fordecl_block$3.c).
+Adding EN signal on $procdff$556 ($dff) from module memristor_crossbar (D = 4, Q = $fordecl_block$5.j).
+Adding EN signal on $procdff$557 ($dff) from module memristor_crossbar (D = $2$fordecl_block$7.j[31:0]$85, Q = $fordecl_block$7.j).
+Adding SRST signal on $procdff$558 ($dff) from module memristor_crossbar (D = $procmux$473_Y, Q = \acc[0], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$690 ($sdff) from module memristor_crossbar (D = $procmux$471_Y, Q = \acc[0]).
+Adding SRST signal on $procdff$559 ($dff) from module memristor_crossbar (D = $procmux$464_Y, Q = \acc[1], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$692 ($sdff) from module memristor_crossbar (D = $procmux$462_Y, Q = \acc[1]).
+Adding SRST signal on $procdff$560 ($dff) from module memristor_crossbar (D = $procmux$455_Y, Q = \acc[2], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$694 ($sdff) from module memristor_crossbar (D = $procmux$453_Y, Q = \acc[2]).
+Adding SRST signal on $procdff$561 ($dff) from module memristor_crossbar (D = $procmux$446_Y, Q = \acc[3], rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$696 ($sdff) from module memristor_crossbar (D = $procmux$444_Y, Q = \acc[3]).
+Adding SRST signal on $procdff$548 ($dff) from module memristor_crossbar (D = $procmux$500_Y, Q = \result_2, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$698 ($sdff) from module memristor_crossbar (D = $add$../rtl/memristor_crossbar.sv:85$101_Y, Q = \result_2).
+Adding SRST signal on $procdff$549 ($dff) from module memristor_crossbar (D = $procmux$491_Y, Q = \result_3, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$702 ($sdff) from module memristor_crossbar (D = $add$../rtl/memristor_crossbar.sv:86$106_Y, Q = \result_3).
+Adding SRST signal on $procdff$550 ($dff) from module memristor_crossbar (D = $procmux$482_Y, Q = \k, rval = 2'00).
+Adding EN signal on $auto$ff.cc:337:slice$706 ($sdff) from module memristor_crossbar (D = $procmux$480_Y, Q = \k).
+Adding EN signal on $procdff$551 ($dff) from module memristor_crossbar (D = 4, Q = $fordecl_block$1.r).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 1-bit at position 2 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$708 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 1-bit at position 2 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$688 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 1-bit at position 2 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$687 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 1-bit at position 2 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$686 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 1-bit at position 2 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$685 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 1 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 1-bit at position 2 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 3 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 4 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 5 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 6 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 7 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 8 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 9 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 10 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 11 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 12 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 13 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 14 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 15 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 16 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 17 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 18 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 19 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 20 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 21 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 22 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 23 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 24 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 25 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 26 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 27 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 28 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 29 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 30 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+Setting constant 0-bit at position 31 on $auto$ff.cc:337:slice$684 ($dffe) from module memristor_crossbar.
+
+5.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+Removed 93 unused cells and 386 unused wires.
+<suppressed ~96 debug messages>
+
+5.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+<suppressed ~3 debug messages>
+Optimizing module memristor_crossbar.
+
+5.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~38 debug messages>
+
+5.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+5.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 71 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+<suppressed ~15 debug messages>
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 62 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 59 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+<suppressed ~9 debug messages>
+Removed a total of 8 cells.
+
+5.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~2 debug messages>
+
+5.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+5.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+5.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~40 debug messages>
+
+5.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+5.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 59 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+5.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+5.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+5.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+5.23. Finished fast OPT passes. (There is nothing left to do.)
+
+6. Executing FSM pass (extract and optimize FSM).
+
+6.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+6.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+6.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+6.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+6.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+6.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+6.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+7. Executing OPT pass (performing simple optimizations).
+
+7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 59 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~40 debug messages>
+
+7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 59 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+7.9. Finished fast OPT passes. (There is nothing left to do.)
+
+8. Executing MEMORY pass.
+
+8.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+8.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 120 transformations.
+
+8.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing memristor_crossbar.G write port 0.
+  Analyzing memristor_crossbar.G write port 1.
+  Analyzing memristor_crossbar.G write port 2.
+  Analyzing memristor_crossbar.G write port 3.
+  Analyzing memristor_crossbar.G write port 4.
+  Analyzing memristor_crossbar.G write port 5.
+  Analyzing memristor_crossbar.G write port 6.
+  Analyzing memristor_crossbar.G write port 7.
+  Analyzing memristor_crossbar.G write port 8.
+  Analyzing memristor_crossbar.G write port 9.
+  Analyzing memristor_crossbar.G write port 10.
+  Analyzing memristor_crossbar.G write port 11.
+  Analyzing memristor_crossbar.G write port 12.
+  Analyzing memristor_crossbar.G write port 13.
+  Analyzing memristor_crossbar.G write port 14.
+  Analyzing memristor_crossbar.G write port 15.
+  Analyzing memristor_crossbar.G write port 16.
+
+8.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+8.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\G'[0] in module `\memristor_crossbar': no output FF found.
+Checking read port `\G'[1] in module `\memristor_crossbar': no output FF found.
+Checking read port `\G'[2] in module `\memristor_crossbar': no output FF found.
+Checking read port `\G'[3] in module `\memristor_crossbar': no output FF found.
+Checking read port address `\G'[0] in module `\memristor_crossbar': merged address FF to cell.
+Checking read port address `\G'[1] in module `\memristor_crossbar': no address FF found.
+Checking read port address `\G'[2] in module `\memristor_crossbar': no address FF found.
+Checking read port address `\G'[3] in module `\memristor_crossbar': no address FF found.
+
+8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+8.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory memristor_crossbar.G by address:
+Consolidating write ports of memory memristor_crossbar.G by address:
+  Merging ports 0, 1 (address 0).
+  Merging ports 0, 2 (address 0).
+  Merging ports 0, 3 (address 0).
+  Merging ports 0, 4 (address 0).
+  Merging ports 0, 5 (address 0).
+  Merging ports 0, 6 (address 0).
+  Merging ports 0, 7 (address 0).
+  Merging ports 0, 8 (address 0).
+  Merging ports 0, 9 (address 0).
+  Merging ports 0, 10 (address 0).
+  Merging ports 0, 11 (address 0).
+  Merging ports 0, 12 (address 0).
+  Merging ports 0, 13 (address 0).
+  Merging ports 0, 14 (address 0).
+  Merging ports 0, 15 (address 0).
+Consolidating write ports of memory memristor_crossbar.G by address:
+Consolidating write ports of memory memristor_crossbar.G using sat-based resource sharing:
+
+8.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+8.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+8.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \G in module \memristor_crossbar:
+  created 16 $dff cells and 0 static cells of width 8.
+Extracted addr FF from read port 0 of memristor_crossbar.G: $\G$rdreg[0]
+  read interface: 1 $dff and 60 $mux cells.
+  write interface: 32 write mux blocks.
+
+9. Executing OPT pass (performing simple optimizations).
+
+9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+<suppressed ~75 debug messages>
+
+9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 294 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$419.
+    dead port 2/2 on $mux $procmux$419.
+Removed 2 multiplexer ports.
+<suppressed ~185 debug messages>
+
+9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 293 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+9.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $\G$rdreg[0] ($dff) from module memristor_crossbar (D = $auto$rtlil.cc:3390:Mux$715, Q = $\G$rdreg[0]$q, rval = 0).
+
+9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+Removed 1 unused cells and 109 unused wires.
+<suppressed ~2 debug messages>
+
+9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+9.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~184 debug messages>
+
+9.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+9.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 292 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+9.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\G[0]$721 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[0][1][0]$y$1080, Q = \G[0]).
+Adding EN signal on $memory\G[1]$723 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[1][1][0]$y$1100, Q = \G[1]).
+Adding EN signal on $memory\G[2]$725 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[2][1][0]$y$1120, Q = \G[2]).
+Adding EN signal on $memory\G[3]$727 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[3][1][0]$y$1138, Q = \G[3]).
+Adding EN signal on $memory\G[4]$729 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[4][1][0]$y$1158, Q = \G[4]).
+Adding EN signal on $memory\G[5]$731 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[5][1][0]$y$1174, Q = \G[5]).
+Adding EN signal on $memory\G[6]$733 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[6][1][0]$y$1190, Q = \G[6]).
+Adding EN signal on $memory\G[7]$735 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[7][1][0]$y$1206, Q = \G[7]).
+Adding EN signal on $memory\G[8]$737 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[8][1][0]$y$1226, Q = \G[8]).
+Adding EN signal on $memory\G[9]$739 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[9][1][0]$y$1242, Q = \G[9]).
+Adding EN signal on $memory\G[10]$741 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[10][1][0]$y$1258, Q = \G[10]).
+Adding EN signal on $memory\G[11]$743 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[11][1][0]$y$1274, Q = \G[11]).
+Adding EN signal on $memory\G[12]$745 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[12][1][0]$y$1292, Q = \G[12]).
+Adding EN signal on $memory\G[13]$747 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[13][1][0]$y$1308, Q = \G[13]).
+Adding EN signal on $memory\G[14]$749 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[14][1][0]$y$1324, Q = \G[14]).
+Adding EN signal on $memory\G[15]$751 ($dff) from module memristor_crossbar (D = $memory\G$wrmux[15][1][0]$y$1340, Q = \G[15]).
+
+9.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+9.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+9.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~184 debug messages>
+
+9.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+9.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 308 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 293 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+9.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+Removed 0 unused cells and 15 unused wires.
+<suppressed ~1 debug messages>
+
+9.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+9.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+9.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~186 debug messages>
+
+9.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+9.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 66 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 293 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+9.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+9.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+9.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+9.30. Finished fast OPT passes. (There is nothing left to do.)
+
+10. Executing TECHMAP pass (map to technology primitives).
+
+10.1. Executing Verilog-2005 frontend: /share/techmap.v
+Parsing Verilog input from `/share/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+10.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $reduce_and.
+Running "alumacc" on wrapper $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=2:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=2:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=2:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=1:A_SIGNED=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=1:A_SIGNED=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=1:A_SIGNED=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=1:A_SIGNED=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=1:A_SIGNED=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=1:A_SIGNED=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=32:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=2:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=2:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:Y_WIDTH=32:B_WIDTH=32:A_WIDTH=2:B_SIGNED=0:A_SIGNED=0:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $paramod$9fe62a4b81638d72bc060d25c78265035b9c879a\_90_alu for cells of type $alu.
+Using template $paramod$2653f68ddb8eab7b1907b4a20767b72a824a7a36\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc_v2.
+  add { \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data } * { $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:86$102_DATA } (32x32 bits, signed)
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+  add { \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data } * { $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:85$97_DATA } (32x32 bits, signed)
+  add { \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data } * { $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:84$92_DATA } (32x32 bits, signed)
+  add { \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data [7] \act_data } * { $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA [7] $memrd$\G$../rtl/memristor_crossbar.sv:83$87_DATA } (32x32 bits, signed)
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $pmux.
+No more expansions possible.
+<suppressed ~3609 debug messages>
+
+11. Executing OPT pass (performing simple optimizations).
+
+11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+<suppressed ~99 debug messages>
+Optimizing module memristor_crossbar.
+<suppressed ~15599 debug messages>
+
+11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 597 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Computing hashes of 582 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Computing hashes of 581 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Computing hashes of 580 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+<suppressed ~51 debug messages>
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 15024 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 13088 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 11853 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 10866 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 10309 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 9767 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 9301 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 9073 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 8841 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 8609 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 8493 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 8429 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 8373 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 8345 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+<suppressed ~20037 debug messages>
+Removed a total of 6696 cells.
+
+11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 580 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 8345 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+11.6. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$1731 ($_SDFF_PN0_) from module memristor_crossbar.
+
+11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+Removed 570 unused cells and 2944 unused wires.
+<suppressed ~572 debug messages>
+
+11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+<suppressed ~172 debug messages>
+
+11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 554 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 7628 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 7620 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Computing hashes of 7616 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+<suppressed ~36 debug messages>
+Removed a total of 12 cells.
+
+11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+Removed 0 unused cells and 36 unused wires.
+<suppressed ~1 debug messages>
+
+11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+11.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \crossbar_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memristor_crossbar..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+11.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \crossbar_top.
+  Optimizing cells in module \memristor_crossbar.
+Performed a total of 0 changes.
+
+11.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\crossbar_top'.
+Computing hashes of 554 cells of `\crossbar_top'.
+Finding duplicate cells in `\crossbar_top'.
+Finding identical cells in module `\memristor_crossbar'.
+Computing hashes of 7616 cells of `\memristor_crossbar'.
+Finding duplicate cells in `\memristor_crossbar'.
+Removed a total of 0 cells.
+
+11.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \crossbar_top..
+Finding unused cells or wires in module \memristor_crossbar..
+
+11.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module crossbar_top.
+Optimizing module memristor_crossbar.
+
+11.23. Finished fast OPT passes. (There is nothing left to do.)
+
+12. Printing statistics.
+
+=== crossbar_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      309 wires
+      782 wire bits
+       46 public wires
+      447 public wire bits
+       21 ports
+      106 port bits
+      553 cells
+      147   $_AND_
+       37   $_MUX_
+       19   $_NOT_
+      131   $_OR_
+      213   $_SDFFE_PN0P_
+        3   $_SDFFE_PP0P_
+        3   $_SDFF_PN0_
+        1 submodules
+        1   memristor_crossbar
+
+=== memristor_crossbar ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1475 wires
+    20011 wire bits
+       35 public wires
+      412 public wire bits
+       14 ports
+      154 port bits
+     7616 cells
+     3086   $_AND_
+      128   $_DFFE_PP_
+      384   $_MUX_
+        8   $_NOT_
+     1216   $_OR_
+      258   $_SDFFE_PN0P_
+        3   $_SDFF_PN0_
+     2533   $_XOR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+     8169 crossbar_top
+     7616 memristor_crossbar
+
+        +----------Count including submodules.
+        | 
+     1784 wires
+    20793 wire bits
+       81 public wires
+      859 public wire bits
+       35 ports
+      260 port bits
+        - memories
+        - memory bits
+        - processes
+     8169 cells
+     3233   $_AND_
+      128   $_DFFE_PP_
+      421   $_MUX_
+       27   $_NOT_
+     1347   $_OR_
+      471   $_SDFFE_PN0P_
+        3   $_SDFFE_PP0P_
+        6   $_SDFF_PN0_
+     2533   $_XOR_
+        1 submodules
+        1   memristor_crossbar
+
+Warnings: 2 unique messages, 2 total
+End of script. Logfile hash: 9d955cb302, time: 1.82s, user: 1.82s, system: 0.00s
+Yosys 0.66 (git sha1 86f2ddebc, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.66]
+Time spent: 36% 18x opt_expr (0 sec), 16% 15x opt_clean (0 sec), ...

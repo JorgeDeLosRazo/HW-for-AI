@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/home/jorgerazo/HW-for-AI/project/m4/synth/runs/RUN_2026-06-08_02-16-10/tmp/00ca56e0a07c43dfbca723b1774ac14f.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/home/jorgerazo/HW-for-AI/project/m4/synth/runs/RUN_2026-06-08_02-16-10/tmp/00ca56e0a07c43dfbca723b1774ac14f.bb.v"
