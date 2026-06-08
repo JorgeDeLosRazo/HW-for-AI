@@ -1,0 +1,51 @@
+Power Estimation Report — crossbar_top (Memristor Crossbar Analog AI Accelerator)
+Tool: Manual estimation from yosys cell counts + sky130_fd_sc_hd characterization
+Note: OpenLane power estimation (via OpenSTA/PrimeTime-PX equivalent) requires
+      a complete synthesis run with PDK mapping. OpenLane failed at the
+      Verilator.Lint step (verilator not installed) so no automated power
+      report is available. Estimates below follow the standard switching-power
+      model: P = α × C_eff × V_dd² × f
+
+=== power model inputs ===
+
+   VDD                     : 1.8 V  (sky130A nominal)
+   Clock frequency         : 100 MHz
+   Cell count (estimated)  : ~4000 sky130 std cells after PDK mapping
+   Activity factor (α)     : 0.2   (typical for MAC datapath, not streaming)
+   Average C_eff/cell      : 2.5 fF  (sky130_fd_sc_hd medium drive strength)
+
+=== dynamic power estimate ===
+
+   P_dynamic = α × N_cells × C_eff × V_dd² × f
+             = 0.2 × 4000 × 2.5e-15 × (1.8)² × 100e6
+             ≈ 0.648 mW
+
+=== static (leakage) power estimate ===
+
+   Leakage per cell (sky130_fd_sc_hd tt/25°C): ~0.5 nW/cell
+   P_leakage = 4000 × 0.5e-9 = 2.0 µW  (negligible)
+
+=== total estimated power ===
+
+   P_total ≈ 0.65 mW  (dominated by dynamic switching)
+
+=== energy per MVM operation ===
+
+   MVM latency: 4 voltage cycles × 10 ns/cycle + overhead ≈ 60 ns/MVM
+   (includes weight load time amortized over 100 MVMs per weight set)
+   E_MVM = P_total × t_MVM = 0.65e-3 × 60e-9 ≈ 39 pJ per 4×4 MVM
+
+=== comparison to M1 CPU baseline ===
+
+   CPU (Intel i5-8350U, addmm kernel): ~228 ms / inference
+   CPU TDP: ~15 W → energy/inference ≈ 228e-3 × 15 = 3.42 J
+   Accelerator energy/MVM ≈ 39 pJ → for equivalent 128×768 GEMM:
+     N_tiles = (128 × 768) / 16 = 6144 tiles
+     E_accelerator ≈ 6144 × 39e-12 ≈ 239 nJ   (≈ 14 million× lower energy)
+
+=== M4 plan for power verification ===
+
+   Installing verilator (sudo apt install verilator) will allow a full
+   OpenLane run. The power step uses the switching activity from simulation
+   (VCD annotation) with the synthesized netlist and sky130 power models
+   to produce a verified estimate. This will be completed for M4.

@@ -1,0 +1,11 @@
+VCD info: dumpfile cosim.vcd opened for output.
+=== M3 co-simulation results (memristor crossbar MVM) ===
+Input V = [1, 2, 3, 4]
+result    got         expected    status
+I_col[0]        -256        -256  PASS
+I_col[1]           0           0  PASS
+I_col[2]        -128        -128  PASS
+I_col[3]        -128        -128  PASS
+--- 4/4 checks passed ---
+PASS
+../tb/tb_top.sv:185: $finish called at 1190000 (1ps)

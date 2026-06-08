@@ -1,0 +1,62 @@
+[02:16:10] INFO     Starting a new run of the 'Classic' flow with    flow.py:628
+                    the tag 'RUN_2026-06-08_02-16-10'.                          
+[02:16:10] INFO     Starting…                                  sequential.py:294
+──────────────────────────────── Verilator Lint ────────────────────────────────
+[02:16:10] VERBOSE  Running 'Verilator.Lint' at                     step.py:1122
+                    'runs/RUN_2026-06-08_02-16-10/01-verilator-lint             
+                    '…                                                          
+[02:16:11] VERBOSE  Logging subprocess to                           step.py:1318
+                    'runs/RUN_2026-06-08_02-16-10/01-verilator-lint             
+                    /verilator-lint.log'…                                       
+Classic - Stage 1 - Verilator Lint                                  0/78 0:00:00
+Traceback (most recent call last):
+  File "/home/jorgerazo/.local/bin/openlane", line 8, in <module>
+    sys.exit(cli())
+             ^^^^^
+  File "/usr/lib/python3/dist-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/flows/cli.py", line 452, in pdk_resolve_wrapper
+    return f(*args, pdk_root=pdk_root, pdk=pdk, scl=scl, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/__main__.py", line 465, in cli
+    run(ctx, **run_kwargs)
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/__main__.py", line 171, in run
+    state_out = flow.start(
+                ^^^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/flows/flow.py", line 657, in start
+    final_state, step_objects = self.run(
+                                ^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/flows/sequential.py", line 338, in run
+    current_state = step.start(
+                    ^^^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/steps/step.py", line 1150, in start
+    views_updates, metrics_updates = self.run(state_in_result, **kwargs)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/steps/verilator.py", line 172, in run
+    result = self.run_subprocess(
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/openlane/steps/step.py", line 1321, in run_subprocess
+    process = _popen_callable(
+              ^^^^^^^^^^^^^^^^
+  File "/home/jorgerazo/.local/lib/python3.12/site-packages/psutil/__init__.py", line 1432, in __init__
+    self.__subproc = subprocess.Popen(*args, **kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'verilator'
+---END---

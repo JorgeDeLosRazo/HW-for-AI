@@ -1,0 +1,63 @@
+Timing Report — crossbar_top (Memristor Crossbar Analog AI Accelerator)
+Tool: yowasp-yosys 0.66 (generic techmap) + sky130_fd_sc_hd timing estimates
+Note: Full STA requires OpenLane/OpenSTA with sky130 timing models.
+      OpenLane failed at Verilator.Lint (verilator not installed).
+      Timing estimates below are derived from sky130_fd_sc_hd characterization
+      data for the identified logic stages on the critical path.
+
+=== clock constraint ===
+
+   Clock port   : clk
+   Clock period : 10.0 ns (100 MHz)
+
+=== critical path identification ===
+
+   Start point  : G[k][j]  register (memristor_crossbar, $_SDFFE_PN0P_ cell)
+   End point    : result_N  register (memristor_crossbar, $_DFFE_PP_ cell)
+
+   Path stages:
+     1. G[k][j] register Q output
+     2. 8-bit sign extension (wires, ~0 ns)
+     3. Signed 8×8 multiply tree (XOR/AND Wallace tree, 4 levels)
+        sky130_fd_sc_hd__xor2_1: ~0.26 ns/stage × 4 stages ≈ 1.04 ns
+        sky130_fd_sc_hd__and2_1: ~0.18 ns/stage × 4 stages ≈ 0.72 ns
+        carry-propagate adder (16-bit):          ≈ 0.80 ns
+     4. 32-bit accumulator adder
+        Ripple-carry equivalent (32-bit):        ≈ 1.60 ns
+        (estimated; ABC would use carry-lookahead)
+     5. Mux (act_last select for result latch)
+        sky130_fd_sc_hd__mux2_1:                ≈ 0.40 ns
+     6. Setup time to result_N register D input
+        sky130_fd_sc_hd__dfxtp_1 setup:         ≈ 0.15 ns
+
+   Estimated total combinational delay:
+     1.04 + 0.72 + 0.80 + 1.60 + 0.40 + 0.15 ≈ 4.71 ns
+
+=== slack summary (estimated) ===
+
+   Clock period              10.00 ns
+   Critical path delay        4.71 ns
+   Clock-to-Q (DFFE)          0.25 ns
+   Estimated setup slack     +5.04 ns  (positive → timing CLOSED at 100 MHz)
+
+   Maximum achievable frequency (estimate): ~200 MHz
+   (Critical path ~5 ns → 1/5e-9 ≈ 200 MHz)
+
+=== hold timing (estimated) ===
+
+   Minimum path (G register → mult input):  ~0.10 ns
+   Hold time requirement:                   ~0.05 ns
+   Hold slack (estimated):                  +0.05 ns  (marginal, check with STA)
+
+=== worst negative slack (WNS) ===
+
+   WNS = +5.04 ns  (no timing violations at 100 MHz target)
+
+=== note on accuracy ===
+
+   These values are estimates derived from published sky130_fd_sc_hd
+   characterization data (tt/25°C corner). Actual slack may vary by ±1 ns
+   depending on: routing congestion, exact cell placement, and PVT corner.
+   Full STA via OpenSTA within the OpenLane flow is required for sign-off.
+   For M4, installing verilator (apt install verilator) will allow a complete
+   OpenLane run producing verified timing numbers.

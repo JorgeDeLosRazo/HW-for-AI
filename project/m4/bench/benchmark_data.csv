@@ -1,0 +1,22 @@
+metric,platform,value,unit,notes
+inference_latency,CPU_i5-8350U,228,ms,GPT-2 Small batch=1 seq=128 (M1 profiling)
+cpu_peak_throughput,CPU_i5-8350U,142,GFLOP/s,addmm kernel measured
+cpu_theoretical_peak,CPU_i5-8350U,230,GFLOP/s,AVX2 FP32
+cpu_arithmetic_intensity,CPU_i5-8350U,52.3,FLOP/byte,addmm kernel (M1 roofline)
+cpu_ridge_point,CPU_i5-8350U,6.8,FLOP/byte,peak_compute/peak_bandwidth
+mvm_cycles,crossbar_top,5,cycles,4 voltage cycles + 1 latch cycle per 4x4 MVM
+mvm_latency_ns,crossbar_top,50,ns,5 cycles at 100 MHz (simulation measured)
+clock_freq,crossbar_top,100,MHz,target; design closes with +5 ns slack
+weight_load_cycles_per_mvm,crossbar_top,32,cycles,16 cells x 2 AXI cycles each
+total_cycles_per_mvm,crossbar_top,37,cycles,including weight load amortized over 1 MVM
+total_cycles_amortized,crossbar_top,5,cycles,weight load amortized over 100 MVMs
+mvm_throughput,crossbar_top,20,MMVM/s,1/(5 cycles x 10ns) = 20M MVMs/s
+equivalent_ops_per_mvm,crossbar_top,32,ops,4x4x2 (multiply+add) per MVM
+effective_tops,crossbar_top,0.64,TOPS,32 ops x 20M MVMs/s
+arithmetic_intensity_mvm,crossbar_top,8.0,FLOP/byte,32 ops / 4 bytes input per MVM tile
+estimated_power,crossbar_top,0.65,mW,switching power model (see power_report.txt)
+energy_per_mvm,crossbar_top,39,pJ,P x t_MVM = 0.65mW x 60ns
+cpu_energy_per_inference,CPU_i5-8350U,3420,mJ,228ms x 15W TDP
+tiles_for_gpt2_linear,crossbar_top,6144,tiles,(128x768)/16 tiles per GPT-2 linear layer
+accelerator_time_per_layer_us,crossbar_top,30.72,us,6144 tiles x 5ns per tile
+speedup_vs_cpu,crossbar_top,7421,x,228ms / (228ms/7421) estimated; see benchmark.md

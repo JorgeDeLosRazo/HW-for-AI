@@ -1,0 +1,102 @@
+/*
+ * memristor_crossbar.sv  —  M3 analog-inspired compute core
+ *
+ * Models a 4×4 resistive crossbar performing in-memory MVM.
+ * Each cell stores a signed conductance G[row][col] (INT8).
+ * G_on = +64 (high-conductance "on" state),
+ * G_off = -64 (differential low-conductance "off" state).
+ *
+ * Analog mapping: I_col[j] = Σ_i G[i][j] × V_row[i]
+ *   (Ohm's law: current = conductance × voltage)
+ * RTL computes this digitally each cycle for functional verification.
+ *
+ * Port list  (drop-in replacement for M2 compute_core):
+ *   clk          in   1    rising-edge system clock
+ *   rst_n        in   1    synchronous active-low reset
+ *   wload_en     in   1    conductance-load strobe (one cell per cycle)
+ *   wload_row    in   2    row index i  (0–3)
+ *   wload_col    in   2    col index j  (0–3)
+ *   wload_data   in   8    signed INT8 conductance G[i][j]
+ *   act_valid    in   1    voltage input valid this cycle
+ *   act_last     in   1    high on 4th (final) input; triggers output latch
+ *   act_data     in   8    signed INT8 voltage V_row[k]
+ *   result_valid out  1    output registers hold valid current sums (1-cycle)
+ *   result_0     out  32   signed INT32 accumulated I_col[0]
+ *   result_1     out  32   signed INT32 accumulated I_col[1]
+ *   result_2     out  32   signed INT32 accumulated I_col[2]
+ *   result_3     out  32   signed INT32 accumulated I_col[3]
+ */
+
+module memristor_crossbar (
+    input  logic        clk,
+    input  logic        rst_n,
+
+    // Conductance load interface
+    input  logic        wload_en,
+    input  logic [1:0]  wload_row,
+    input  logic [1:0]  wload_col,
+    input  logic signed [7:0]  wload_data,
+
+    // Voltage input stream
+    input  logic        act_valid,
+    input  logic        act_last,
+    input  logic signed [7:0]  act_data,
+
+    // Current output (column sums)
+    output logic        result_valid,
+    output logic signed [31:0] result_0,
+    output logic signed [31:0] result_1,
+    output logic signed [31:0] result_2,
+    output logic signed [31:0] result_3
+);
+
+    // Conductance register array  G[row_i][col_j]
+    logic signed [7:0]  G   [0:3][0:3];
+    // Column current accumulators
+    logic signed [31:0] acc [0:3];
+    // Row pointer: which row's conductances multiply this voltage sample
+    logic [1:0]         k;
+
+    always_ff @(posedge clk) begin
+        if (!rst_n) begin
+            result_valid <= 1'b0;
+            result_0     <= 32'sd0;
+            result_1     <= 32'sd0;
+            result_2     <= 32'sd0;
+            result_3     <= 32'sd0;
+            k            <= 2'd0;
+            for (int r = 0; r < 4; r++)
+                for (int c = 0; c < 4; c++)
+                    G[r][c] <= 8'sd0;
+            for (int j = 0; j < 4; j++)
+                acc[j] <= 32'sd0;
+        end else begin
+            result_valid <= 1'b0;
+
+            // Conductance write (G ← new memristor state)
+            if (wload_en)
+                G[wload_row][wload_col] <= wload_data;
+
+            // Voltage-driven accumulation: I[j] += G[k][j] * V[k]
+            if (act_valid) begin
+                if (act_last) begin
+                    result_0 <= acc[0] + (32'(signed'(act_data)) * 32'(signed'(G[k][0])));
+                    result_1 <= acc[1] + (32'(signed'(act_data)) * 32'(signed'(G[k][1])));
+                    result_2 <= acc[2] + (32'(signed'(act_data)) * 32'(signed'(G[k][2])));
+                    result_3 <= acc[3] + (32'(signed'(act_data)) * 32'(signed'(G[k][3])));
+                    for (int j = 0; j < 4; j++)
+                        acc[j] <= 32'sd0;
+                    result_valid <= 1'b1;
+                    k <= 2'd0;
+                end else begin
+                    acc[0] <= acc[0] + (32'(signed'(act_data)) * 32'(signed'(G[k][0])));
+                    acc[1] <= acc[1] + (32'(signed'(act_data)) * 32'(signed'(G[k][1])));
+                    acc[2] <= acc[2] + (32'(signed'(act_data)) * 32'(signed'(G[k][2])));
+                    acc[3] <= acc[3] + (32'(signed'(act_data)) * 32'(signed'(G[k][3])));
+                    k <= k + 1;
+                end
+            end
+        end
+    end
+
+endmodule

@@ -1,0 +1,16 @@
+{
+  "DESIGN_NAME": "crossbar_top",
+  "VERILOG_FILES": [
+    "../rtl/compute_core.sv",
+    "../rtl/interface.sv",
+    "../rtl/top.sv"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10.0,
+  "PDK": "sky130A",
+  "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+  "SYNTH_STRATEGY": "AREA 0",
+  "SYNTH_SIZING": false,
+  "FP_PDN_MULTILAYER": true,
+  "PL_TARGET_DENSITY_PCT": 40
+}
